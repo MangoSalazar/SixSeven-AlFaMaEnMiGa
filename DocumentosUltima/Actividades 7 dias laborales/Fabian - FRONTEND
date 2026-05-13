@@ -1,1 +1,156 @@
+----------------FABIÁN – FRONTEND DOCENTE/ALUMNO (DÍAS 1–7)--------------------
+Día 1 – Pantalla de login
+Objetivo:
+Dejar la pantalla de inicio de sesión funcional a nivel visual y conectada a la verificación básica del backend.
 
+Actividades:
+
+Diseñar y maquetar la pantalla de login (usuario/matrícula, contraseña, botón, mensajes).
+
+Coordinarse con Milton para acordar qué acción llama a la función de verificación del servidor y qué mensaje se espera.
+
+Implementar la llamada a la verificación y mostrar mensajes de éxito/error básicos.
+
+Subir la pantalla de login al repositorio en la rama de frontend.
+
+Reporte Día 1:
+
+Pantalla de login maquetada.
+
+Conexión básica con backend implementada.
+
+Cambios subidos al repositorio.
+
+Día 2 – Formularios de alta (alumnos y docentes)
+Objetivo:
+Permitir altas de alumnos y docentes desde la interfaz.
+
+Actividades:
+
+Diseñar formulario de alta de alumnos con los campos aprobados.
+
+Diseñar formulario de alta de docentes con sus campos aprobados.
+
+Coordinarse con Milton para saber qué datos enviar y qué mensajes recibir.
+
+Conectar los formularios al backend para que las altas se guarden en BD.
+
+Subir los cambios de formularios al repositorio.
+
+Reporte Día 2:
+
+Formularios de alta de alumnos y docentes creados.
+
+Conexión con backend aplicada.
+
+Cambios subidos al repositorio.
+
+Día 3 – Pantalla “Mis grupos” (docente)
+Objetivo:
+Permitir que el docente vea sus grupos.
+
+Actividades:
+
+Diseñar la pantalla “Mis grupos” para el docente (lista con datos básicos de cada grupo).
+
+Coordinarse con Milton para consumir la función que devuelve grupos por docente.
+
+Implementar la lista de grupos y permitir seleccionar un grupo.
+
+Subir la pantalla “Mis grupos” al repositorio.
+
+Reporte Día 3:
+
+Pantalla “Mis grupos” creada.
+
+Conexión con backend implementada.
+
+Cambios subidos al repositorio.
+
+Día 4 – Pantalla de alumnos por grupo y captura de calificaciones
+Objetivo:
+Permitir al docente ver los alumnos del grupo y capturar calificaciones.
+
+Actividades:
+
+Diseñar la pantalla que muestre la lista de alumnos de un grupo.
+
+Agregar campos para capturar calificaciones por alumno.
+
+Coordinarse con Milton para enviar calificaciones correctamente y manejar las respuestas.
+
+Subir las pantallas del módulo docente al repositorio.
+
+Reporte Día 4:
+
+Pantalla de alumnos por grupo implementada.
+
+Captura de calificaciones conectada a backend.
+
+Cambios subidos al repositorio.
+
+Día 5 – Panel del alumno
+Objetivo:
+Construir el panel de alumno con horario, materias y calificaciones.
+
+Actividades:
+
+Diseñar el panel del alumno con secciones: horario, materias actuales, calificaciones.
+
+Coordinarse con Milton para consumir las funciones de horario, kardex y calificaciones.
+
+Conectar cada sección del panel a las funciones correspondientes del backend.
+
+Subir el panel del alumno al repositorio.
+
+Reporte Día 5:
+
+Panel del alumno implementado.
+
+Conexión con backend aplicada en todas las secciones.
+
+Cambios subidos al repositorio.
+
+Día 6 – Correcciones de frontend (módulos docente y alumno)
+Objetivo:
+Corregir errores y mejorar la experiencia en las pantallas de docente y alumno.
+
+Actividades:
+
+Recorrer las pantallas de módulo docente y alumno, detectando errores de flujo, presentación y navegación.
+
+Corregir enlaces rotos, problemas en formularios y mensajes confusos.
+
+Coordinarse con Milton cuando los errores se deban a datos incorrectos desde backend.
+
+Subir al repositorio las correcciones realizadas.
+
+Reporte Día 6:
+
+Problemas de módulo docente y alumno corregidos.
+
+Coordinación con backend documentada.
+
+Cambios subidos al repositorio.
+
+Día 7 – Evidencias visuales (junto con Alfredo)
+Objetivo:
+Apoyar en la documentación visual del sistema.
+
+Actividades:
+
+Tomar capturas de pantallas clave relacionadas con docente y alumno.
+
+Redactar descripciones breves de lo que puede hacer un docente y un alumno en cada pantalla.
+
+Coordinarse con Enrique para seleccionar qué pantallas se mostrarán en la demo.
+
+Subir las capturas y descripciones al repositorio.
+
+Reporte Día 7:
+
+Capturas de pantallas de módulos docente y alumno generadas.
+
+Descripciones redactadas.
+
+Material visual subido.
