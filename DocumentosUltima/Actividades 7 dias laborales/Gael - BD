@@ -1,1 +1,166 @@
+------------GAEL – BASE DE DATOS (DÍAS 1–7)--------------
+Día 1 – Modelo inicial y script base
+Objetivo:
+Definir el modelo de datos base y dejar un script de creación de tablas.
 
+Actividades:
+
+Diseñar el modelo entidad–relación inicial con tablas: Alumno, Docente, Materia, Usuario y Rol.
+
+Considerar en el diseño la futura necesidad de tablas para trámites y referencias de pago (sin implementarlas aún).
+
+Crear un script de creación de estas tablas (CREATE TABLE, llaves primarias, tipos básicos).
+
+Insertar datos de prueba: al menos un alumno, un docente y una materia.
+
+Coordinarse con Milton para definir y probar los parámetros de conexión backend–BD.
+
+Subir el script (y si aplica, el diagrama) al repositorio en la carpeta de BD.
+
+Reporte Día 1:
+
+Modelo ER inicial definido.
+
+Script de BD creado y subido.
+
+Datos de prueba insertados.
+
+Conexión backend–BD probada con Milton.
+
+Día 2 – Ajustes para altas
+Objetivo:
+Adaptar las tablas para soportar las altas con los campos aprobados.
+
+Actividades:
+
+Modificar las tablas de Alumno, Docente y Materia según los campos aprobados por Enrique.
+
+Actualizar el script de BD con la nueva estructura.
+
+Insertar registros de prueba con la estructura ajustada.
+
+Coordinarse con Milton para resolver desajustes entre datos que envía el backend y lo que la BD admite.
+
+Subir el script actualizado al repositorio.
+
+Reporte Día 2:
+
+Tablas de Alumno, Docente y Materia ajustadas.
+
+Script actualizado y subido.
+
+Pruebas de inserción realizadas.
+
+Día 3 – Tablas de grupos y relaciones
+Objetivo:
+Crear las tablas de grupos y sus relaciones.
+
+Actividades:
+
+Crear la tabla de Grupo con sus campos principales.
+
+Crear tablas de relación para:
+
+Grupo–Docente.
+
+Grupo–Materia.
+
+Grupo–Alumno.
+
+Probar la creación de un grupo de ejemplo y su vinculación con docente, materia y alumnos.
+
+Coordinarse con Milton para ajustar nombres de columnas, claves y relaciones según el backend.
+
+Actualizar el script de BD y subirlo al repositorio.
+
+Reporte Día 3:
+
+Tablas de grupos y relaciones creadas.
+
+Script de BD actualizado.
+
+Pruebas de ejemplo realizadas.
+
+Día 4 – Tablas de calificaciones
+Objetivo:
+Soportar el registro y consulta de calificaciones.
+
+Actividades:
+
+Crear o ajustar tabla(s) de calificaciones que relacionen alumno, grupo/materia y notas parciales/finales.
+
+Probar inserciones de calificaciones de ejemplo.
+
+Coordinarse con Milton para asegurar que campos y tipos coinciden con lo que el backend envía.
+
+Actualizar el script de BD y subirlo al repositorio.
+
+Reporte Día 4:
+
+Tabla(s) de calificaciones definidas y probadas.
+
+Script actualizado y subido.
+
+Día 5 – Consultas de horario y kardex
+Objetivo:
+Definir las consultas necesarias para horario y kardex del alumno.
+
+Actividades:
+
+Preparar consultas SQL (o vistas) que construyan:
+
+El horario del alumno con base en sus grupos.
+
+El kardex básico (materias cursadas con calificación final).
+
+Coordinarse con Milton para validar que las consultas devuelven los datos necesarios (campos, formato).
+
+Actualizar el script de BD si se crean vistas u objetos adicionales y subirlo al repositorio.
+
+Reporte Día 5:
+
+Consultas para horario y kardex definidas y probadas.
+
+Script de BD actualizado (si aplicó) y subido.
+
+Día 6 – Correcciones de modelo y consultas
+Objetivo:
+Corregir problemas de BD detectados en las pruebas.
+
+Actividades:
+
+Revisar las incidencias relacionadas con BD (consultas lentas, datos incompletos, errores de relación).
+
+Ajustar tablas, relaciones o consultas para corregir esos problemas.
+
+Coordinarse con Milton para probar los cambios desde el backend.
+
+Actualizar el script de BD con la versión final ajustada y subirlo.
+
+Reporte Día 6:
+
+Errores de BD corregidos.
+
+Pruebas con backend realizadas.
+
+Script final ajustado y subido.
+
+Día 7 – Documentación técnica de BD (con Milton)
+Objetivo:
+Documentar el diseño final de la base de datos.
+
+Actividades:
+
+Elaborar el diagrama final de BD con todas las tablas relevantes (información escolar y trámites/referencias de pago contempladas).
+
+Coordinarse con Milton para asegurarse de que el diagrama coincide con las funciones del backend.
+
+Subir el diagrama y, si aplica, documentación complementaria al repositorio.
+
+Reporte Día 7:
+
+Diagrama de BD final elaborado.
+
+Coherencia con backend revisada.
+
+Documentación de BD subida al repositorio.
