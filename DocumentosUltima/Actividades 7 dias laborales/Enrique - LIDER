@@ -1,1 +1,190 @@
+---------ENRIQUE – LÍDER TÉCNICO (DÍAS 1–7)---------
+Día 1 – Organización inicial
+Objetivo:
+Dejar listo el entorno de trabajo y la organización del equipo.
 
+Actividades:
+
+Crear el repositorio del proyecto y las ramas de trabajo (rama principal, rama de desarrollo y ramas por integrante/módulo).
+
+Verificar que todos los integrantes tienen acceso al repositorio y pueden clonar el proyecto.
+
+Redactar un documento corto con:
+
+Uso de ramas (quién trabaja en cuál).
+
+Estructura mínima del reporte diario.
+
+Forma de coordinarse entre roles (backend–BD–frontend–pruebas).
+
+Explicar al equipo qué debe entregar cada rol al final del Día 1.
+
+Subir al repositorio el documento de reglas de trabajo en la carpeta de documentación.
+
+Reporte Día 1:
+
+Repositorio y ramas creadas.
+
+Documento de reglas elaborado y subido.
+
+Roles y tareas explicados al equipo.
+
+Día 2 – Validación de campos de altas
+Objetivo:
+Validar que los datos que se capturan en las altas son coherentes con el alcance del sistema.
+
+Actividades:
+
+Revisar la propuesta de campos para alumno, docente y materia que preparen Gael (BD) y Milton (backend), basada en el análisis previo.
+
+Validar que esos campos cubren lo necesario para los procesos académicos y administrativos, sin pedir datos innecesarios.
+
+Comunicar al equipo la lista de campos aprobados para cada alta (alumno, docente, materia).
+
+Subir al repositorio, en documentación, un apartado con los campos aprobados.
+
+Reporte Día 2:
+
+Propuestas de campos revisadas.
+
+Lista final de campos aprobados.
+
+Documento de campos subido.
+
+Día 3 – Validación del modelo de grupos
+Objetivo:
+Validar que grupos y relaciones se implementan según lo definido en las historias de uso.
+
+Actividades:
+
+Revisar el modelo de grupos que propongan Gael y Milton (grupo–docente–materia–alumnos).
+
+Validar que el modelo de grupos soporta correctamente los flujos críticos:
+
+Asignación de grupos.
+
+Consulta de grupos por docente.
+
+Relación con alumnos.
+
+Comunicar ajustes funcionales si falta algún dato relevante (por ejemplo, periodo del grupo).
+
+Subir una nota breve de validación de grupos a la carpeta de documentación.
+
+Reporte Día 3:
+
+Modelo de grupos revisado.
+
+Ajustes funcionales comunicados (si hubo).
+
+Nota de validación subida.
+
+Día 4 – Validación del módulo docente
+Objetivo:
+Validar el flujo del módulo docente (grupos, alumnos y calificaciones).
+
+Actividades:
+
+Revisar que el módulo docente permita:
+
+Ver los grupos asignados al docente.
+
+Ver la lista de alumnos de un grupo.
+
+Capturar calificaciones parciales y finales.
+
+Comparar este flujo con las historias de uso críticas de docentes para asegurar que no faltan pasos clave.
+
+Coordinarse con Milton y Fabián para ajustar comportamientos funcionales (por ejemplo, cuándo se puede editar una calificación).
+
+Subir al repositorio un resumen del flujo docente validado.
+
+Reporte Día 4:
+
+Flujo del módulo docente revisado.
+
+Ajustes funcionales acordados.
+
+Resumen del flujo subido al repo.
+
+Día 5 – Validación del módulo alumno
+Objetivo:
+Validar que el módulo alumno cubre consultas de horario, kardex y calificaciones.
+
+Actividades:
+
+Revisar que el módulo alumno permita:
+
+Ver horario de clases.
+
+Ver historial de materias cursadas y calificaciones (kardex básico).
+
+Ver calificaciones actuales.
+
+Coordinarse con Milton y Fabián para corregir cualquier desajuste que afecte la lógica académica.
+
+Subir una nota breve de validación del módulo alumno a la documentación del repositorio.
+
+Reporte Día 5:
+
+Módulo alumno revisado.
+
+Ajustes funcionales (si hubo) comunicados.
+
+Nota de validación subida.
+
+Día 6 – Integración y priorización de errores
+Objetivo:
+Consolidar el sistema, priorizar errores y coordinar correcciones.
+
+Actividades:
+
+Revisar el estado general del proyecto (backend, BD, frontend, pruebas).
+
+Recoger de cada integrante los problemas detectados y elaborar una lista priorizada de errores/pedientes críticos.
+
+Asignar las correcciones a cada rol (backend, BD, frontend, pruebas) y acordar qué se corrige en el mismo Día 6.
+
+(Opcional, pero recomendable según tu idea de horario) Definir una hora de corte diaria para integraciones a develop y comunicarla:
+
+Ejemplo: subir cambios a ramas antes de 7:30 pm; integraciones a develop entre 7:30 y 8:30 pm.
+
+Subir al repositorio la lista priorizada de pendientes.
+
+Reporte Día 6:
+
+Lista de errores/pedientes críticos creada.
+
+Responsabilidades de corrección asignadas.
+
+Regla de hora de corte para integraciones comunicada (si se formaliza).
+
+Documento de pendientes subido.
+
+Día 7 – Documentación y demo
+Objetivo:
+Cerrar documentación y preparar la demostración del sistema.
+
+Actividades:
+
+Redactar el documento final de organización del flujo de trabajo y roles, con base en la planeación y lo realmente logrado.
+
+Preparar el guion de la demo:
+
+Casos que se van a mostrar.
+
+Orden de las pantallas.
+
+Usuarios con los que se va a ingresar.
+
+Coordinar con el equipo quién explicará cada parte del sistema en la presentación.
+
+Subir al repositorio el documento final y el guion de la demo.
+
+Reporte Día 7:
+
+Documento final de organización terminado.
+
+Guion de demo definido.
+
+Archivos subidos al repositorio.
