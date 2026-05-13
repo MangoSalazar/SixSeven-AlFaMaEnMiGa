@@ -1,1 +1,170 @@
+--------------CÉSAR – PRUEBAS Y DOCUMENTACIÓN (DÍAS 1–7)-------------------
+Día 1 – Arranque de pruebas
+Objetivo:
+Verificar arranque del sistema y funcionamiento básico de login.
 
+Actividades:
+
+Clonar el proyecto y ejecutar backend y frontend.
+
+Coordinarse con Milton y Gael para validar que el backend y la BD están activos y conectados.
+
+Probar la pantalla de login y la acción de verificación de servidor.
+
+Crear un documento simple de incidencias con hallazgos.
+
+Subir el documento de incidencias al repositorio.
+
+Reporte Día 1:
+
+Sistema ejecutado.
+
+Conexión backend–BD verificada.
+
+Pruebas de login realizadas.
+
+Documento de incidencias subido.
+
+Día 2 – Pruebas de altas
+Objetivo:
+Probar altas de alumnos, docentes y materias de punta a punta.
+
+Actividades:
+
+Registrar varios alumnos, docentes y materias desde la interfaz.
+
+Coordinarse con Gael para revisar los registros en la BD.
+
+Probar altas con datos incompletos para comprobar validaciones.
+
+Coordinarse con Fabián, Alfredo y Milton para reportar problemas.
+
+Actualizar y subir el documento de incidencias.
+
+Reporte Día 2:
+
+Altas probadas (cantidad y tipos).
+
+Coincidencia datos interfaz–BD verificada.
+
+Incidencias nuevas documentadas y subidas.
+
+Día 3 – Pruebas de grupos
+Objetivo:
+Validar el flujo de creación y consulta de grupos.
+
+Actividades:
+
+Probar, como admin/coordinador: crear grupo, asignar docente, asignar materia, vincular alumnos.
+
+Probar, como docente: ver grupos en “Mis grupos”.
+
+Coordinarse con Gael para revisar registros de grupos y relaciones en BD.
+
+Actualizar el documento de incidencias y subirlo.
+
+Reporte Día 3:
+
+Flujos de grupos probados.
+
+Coincidencia BD–interfaz verificada.
+
+Documento de incidencias actualizado y subido.
+
+Día 4 – Pruebas del módulo docente
+Objetivo:
+Validar el módulo docente completo: grupos, alumnos y calificaciones.
+
+Actividades:
+
+Probar, como docente: ver grupos, ver alumnos de un grupo, capturar calificaciones.
+
+Coordinarse con Gael para verificar que las calificaciones se guardan en BD.
+
+Coordinarse con Fabián y Alfredo para reportar problemas de interfaz.
+
+Actualizar y subir el documento de incidencias.
+
+Reporte Día 4:
+
+Flujos del módulo docente probados.
+
+BD revisada para calificaciones.
+
+Documento de incidencias actualizado y subido.
+
+Día 5 – Pruebas del módulo alumno
+Objetivo:
+Validar el panel del alumno (horario, materias, calificaciones).
+
+Actividades:
+
+Probar, como alumno: ver horario, materias actuales y calificaciones.
+
+Coordinarse con Gael y Milton para asegurar que los datos coinciden con registros en BD.
+
+Coordinarse con Fabián y Alfredo para reportar problemas visuales o de navegación.
+
+Actualizar y subir el documento de incidencias.
+
+Reporte Día 5:
+
+Flujos del módulo alumno probados.
+
+Coincidencia BD–interfaz verificada.
+
+Incidencias actualizadas y documento subido.
+
+Día 6 – Pruebas de integración
+Objetivo:
+Validar el sistema completo de punta a punta.
+
+Actividades:
+
+Ejecutar flujos completos:
+
+Desde altas → grupos → módulo docente → módulo alumno.
+
+Otros flujos relevantes (según alcance).
+
+Verificar que los errores previamente reportados se hayan corregido.
+
+Registrar cualquier nuevo problema y marcar si se corrige en el mismo Día 6 o queda como pendiente.
+
+Subir el documento de incidencias actualizado con el estado de cada problema.
+
+Reporte Día 6:
+
+Pruebas integrales realizadas.
+
+Estado de correcciones actualizado.
+
+Documento de incidencias subido.
+
+Día 7 – Informe final de pruebas
+Objetivo:
+Documentar formalmente todas las pruebas y el estado final de calidad del sistema.
+
+Actividades:
+
+Redactar un informe de pruebas con:
+
+Flujos probados por rol.
+
+Errores encontrados.
+
+Errores corregidos.
+
+Limitaciones o mejoras futuras.
+
+Coordinarse con Enrique para integrar este informe en la documentación final del proyecto.
+
+Subir el informe de pruebas al repositorio.
+
+Reporte Día 7:
+
+Informe final de pruebas elaborado.
+
+Coordinación con Enrique realizada.
+
+Informe subido al repositorio.
