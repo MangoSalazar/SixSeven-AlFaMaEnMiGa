@@ -1,1 +1,87 @@
+Objetivo
+Desarrollar una página web funcional tipo sistema escolar para gestionar, de forma básica, el acceso y la consulta de información académica de alumnos, docentes y personal administrativo, utilizando una estructura de trabajo organizada por ramas, roles definidos y entregas parciales durante una semana de desarrollo.
+
+-------Alcance del proyecto-------
+El sistema incluirá únicamente las funciones esenciales:
+•	Inicio de sesión básico por rol.
+•	Alumno: consulta de horario, materias y calificaciones.
+•	Docente: consulta de grupos asignados y captura básica de calificaciones.
+•	Administrativo: alta de alumnos, docentes, materias y grupos.
+•	Interfaz web simple y funcional.
+Quedan fuera del alcance funciones como reportes complejos, notificaciones, reinscripción completa, pagos, recuperación de contraseña, dashboards avanzados y automatizaciones extensas.
+
+-------Propuesta técnica-------
+Se trabajará con una arquitectura web sencilla basada en Spring Boot, donde la interfaz HTML se conectará con la lógica en Java y la información se almacenará en una base de datos ligera o de fácil administración.
+Tecnologías sugeridas:
+•	Spring Boot para la estructura principal del proyecto y la lógica del sistema.
+•	HTML, CSS y Bootstrap para la interfaz.
+•	Java para el desarrollo del backend.
+•	MySQL o SQLite como base de datos.
+•	Git y GitHub para control de versiones.
+
+-------Herramientas por tecnología-------
+Para evitar problemas de integración, se acuerda utilizar herramientas compatibles con cada tecnología.
+•	Java y Spring Boot: IntelliJ IDEA como entorno principal, con JDK instalado.
+•	HTML, CSS y Bootstrap: Visual Studio Code o Visual Studio como editores de trabajo.
+•	Base de datos: herramienta compatible con MySQL o SQLite.
+•	Git y GitHub: control de ramas, commits, Pull Requests y revisión de cambios.
+
+-------Organización del equipo-------
+•	Castruita López Jesús Enrique – 22440113
+Líder técnico: coordinación general del proyecto, integración de ramas, revisión de Pull Requests, control de la rama main y resolución de conflictos de código.
+•	Fierro Rodríguez Milton Yahir – 22440388
+Backend: responsable de la lógica del sistema en Spring Boot, implementación de la autenticación, manejo de usuarios y desarrollo de los endpoints para alumno, docente y administrativo.
+•	Pacheco López Gael Eduardo – 22440148
+Base de datos: responsable del diseño y administración de la base de datos (modelo académico, tablas, relaciones y consultas principales), así como de la creación de los scripts de inicialización.
+•	Montes Corrales Fabián Guadalupe – 22440271
+Frontend 1: desarrollo de las vistas para alumno y docente, incluyendo formularios, tablas y navegación correspondiente, integrando la interfaz con los servicios del backend.
+•	Jiménez Germán Alfredo – 22440406
+Frontend 2: desarrollo de las vistas administrativas (altas de alumnos, docentes, materias y grupos) y responsable del diseño visual general (estilos, componentes y coherencia gráfica del sistema).
+•	Salazar Esquer Cesar – 22440193
+Soporte funcional: responsable de las pruebas manuales de los módulos, registro de incidencias, verificación de flujos completos y apoyo en la documentación y evidencias de funcionamiento.
+
+-------Nomenclatura de commits-------
+Se utilizará una convención estándar para mantener claridad en el historial del repositorio:
+•	feat: nueva funcionalidad.
+•	fix: corrección de errores.
+•	refactor: mejora interna.
+•	docs: documentación.
+•	style: cambios visuales.
+•	test: pruebas.
+•	sql: cambios de base de datos.
+
+-------Función del líder técnico-------
+El líder técnico será responsable de mantener el orden del repositorio, supervisar el flujo de trabajo y validar que cada cambio pueda integrarse sin afectar la estabilidad del sistema. También deberá revisar que cada reporte diario coincida con el avance real en la rama correspondiente.
+
+-------Flujo de trabajo-------
+Se utilizará una estructura simplificada basada en Git Flow:
+•	main: versión final estable.
+•	develop: integración diaria del equipo.
+•	feature/*: trabajo individual o por módulo.
+
+-------Reglas principales-------
+•	No programar directamente en main.
+•	Todo cambio debe partir de develop.
+•	Cada integrante trabajará en su propia rama.
+•	Se realizarán commits frecuentes.
+•	Todo cambio relevante pasará por Pull Request.
+Revisión y pruebas
+Cada integrante deberá probar su propia funcionalidad antes de subirla. Posteriormente, el soporte funcional verificará el módulo de forma manual y el líder técnico realizará una revisión final antes de aceptar el cambio e integrarlo a develop.
+
+-------Reporte diario-------
+Cada integrante deberá entregar un reporte diario breve que incluya:
+•	Actividades realizadas.
+•	Archivos modificados.
+•	Pendientes o bloqueos.
+•	Observaciones sobre errores encontrados.
+
+-------Plan de trabajo semanal-------
+•	Día 1: estructura del proyecto, ramas, diseño base y login.
+•	Día 2: altas de alumnos, docentes y materias.
+•	Día 3: grupos y relaciones académicas.
+•	Día 4: módulo docente.
+•	Día 5: módulo alumno.
+•	Día 6: integración y correcciones.
+•	Día 7: documentación y demo.
+
 
