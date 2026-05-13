@@ -1,1 +1,168 @@
+---------------ALFREDO – FRONTEND ADMIN/COORDINADOR (DÍAS 1–7)----------------------
+Día 1 – Línea gráfica y login
+Objetivo:
+Definir la identidad visual y aplicarla a la pantalla de login.
 
+Actividades:
+
+Definir paleta de colores, tipografías y estilos de botones, campos y mensajes.
+
+Implementar los estilos globales en un archivo reutilizable de estilos.
+
+Coordinarse con Fabián para aplicar los estilos a la pantalla de login.
+
+Subir los estilos y ajustes al repositorio en la rama de frontend.
+
+Reporte Día 1:
+
+Línea gráfica definida.
+
+Estilos globales creados.
+
+Pantalla de login ajustada visualmente.
+
+Cambios subidos al repositorio.
+
+Día 2 – Formulario de alta de materias
+Objetivo:
+Permitir que el admin/coordinador pueda registrar materias.
+
+Actividades:
+
+Diseñar el formulario de alta de materias con los campos aprobados (clave, nombre, créditos, etc.).
+
+Coordinarse con Milton para alinear los datos enviados con los que espera el backend.
+
+Implementar mensajes claros de éxito/error al registrar una materia.
+
+Subir al repositorio los cambios de la pantalla de materias.
+
+Reporte Día 2:
+
+Formulario de alta de materias creado.
+
+Conexión con backend implementada.
+
+Mensajes probados.
+
+Cambios subidos.
+
+Día 3 – Gestión de grupos (admin/coordinador)
+Objetivo:
+Permitir que el admin/coordinador gestione grupos.
+
+Actividades:
+
+Diseñar una pantalla para gestión de grupos:
+
+Crear grupo.
+
+Asignar docente.
+
+Asignar materia.
+
+Coordinarse con Milton para integrar las operaciones de creación y asignación.
+
+Implementar mensajes claros de éxito/error en la pantalla.
+
+Subir la pantalla de gestión de grupos al repositorio.
+
+Reporte Día 3:
+
+Pantalla de gestión de grupos creada.
+
+Flujo de creación y asignación probado.
+
+Cambios subidos al repositorio.
+
+Día 4 – Refinamiento del módulo docente (diseño)
+Objetivo:
+Mejorar la usabilidad del módulo docente.
+
+Actividades:
+
+Revisar las pantallas de “Mis grupos” y “Alumnos del grupo” para mejorar la presentación de tablas, formularios y mensajes.
+
+Aplicar la línea gráfica de forma consistente.
+
+Coordinarse con Fabián para pulir detalles de flujo y presentación.
+
+Subir al repositorio los ajustes de diseño del módulo docente.
+
+Reporte Día 4:
+
+Pantallas docentes refinadas visualmente.
+
+Problemas de usabilidad atendidos.
+
+Cambios subidos.
+
+Día 5 – Refinamiento del panel alumno
+Objetivo:
+Hacer que el panel del alumno sea claro y legible.
+
+Actividades:
+
+Ajustar el diseño del horario para que sea entendible (por ejemplo, tabla por día/hora).
+
+Mejorar la presentación de materias y calificaciones (jerarquía visual, colores, tipografía).
+
+Coordinarse con Fabián para mantener coherencia visual.
+
+Subir los ajustes del panel alumno al repositorio.
+
+Reporte Día 5:
+
+Panel alumno refinado visualmente.
+
+Problemas de lectura/comprensión atendidos.
+
+Cambios subidos.
+
+Día 6 – Correcciones generales de frontend
+Objetivo:
+Pulir la interfaz en todos los módulos desde el punto de vista de admin/diseño.
+
+Actividades:
+
+Recorrer las pantallas de alta, grupos y otros módulos para detectar:
+
+Inconsistencias visuales.
+
+Mensajes mal colocados o poco claros.
+
+Corregir estos problemas en conjunto con Fabián.
+
+Coordinarse con Milton si algún problema visual se debe a formato de datos del backend.
+
+Subir al repositorio las correcciones aplicadas.
+
+Reporte Día 6:
+
+Pantallas revisadas y corregidas.
+
+Coordinación con backend registrada.
+
+Cambios subidos.
+
+Día 7 – Evidencias visuales (junto con Fabián)
+Objetivo:
+Documentar visualmente el sistema para la demo y el reporte.
+
+Actividades:
+
+Tomar capturas de pantalla de las pantallas de admin/coordinador y apoyo en otras vistas.
+
+Redactar descripciones breves de lo que hace cada pantalla.
+
+Coordinarse con Enrique para decidir cuáles se usarán en la demo.
+
+Subir capturas y descripciones al repositorio.
+
+Reporte Día 7:
+
+Capturas de pantallas de admin/coordinador generadas.
+
+Descripciones redactadas.
+
+Material subido al repositorio.
