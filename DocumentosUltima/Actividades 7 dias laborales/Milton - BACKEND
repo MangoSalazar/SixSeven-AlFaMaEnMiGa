@@ -1,1 +1,178 @@
+--------MILTON – BACKEND (DÍAS 1–7)----------
+Día 1 – Backend base y verificación
+Objetivo:
+Tener el backend ejecutándose, organizado y con una operación de verificación.
+
+Actividades:
+
+Abrir o crear el proyecto backend y comprobar que compila y se ejecuta sin errores.
+
+Organizar el código en capas: controladores, servicios, modelos/entidades y acceso a datos.
+
+Crear una clase de usuario con campos: id, matrícula/usuario, contraseña, rol.
+
+Programar una función sencilla que responda un mensaje fijo indicando que el servidor está activo (verificación).
+
+Coordinarse con Gael para acordar los parámetros de conexión a la BD y configurarlos en el backend.
+
+Subir al repositorio el backend base en la rama correspondiente.
+
+Reporte Día 1:
+
+Backend ejecutándose y estructurado.
+
+Entidad Usuario creada.
+
+Verificación implementada.
+
+Conexión BD configurada con Gael.
+
+Cambios subidos al repositorio.
+
+Día 2 – Altas de alumnos, docentes y materias
+Objetivo:
+Implementar las funciones del servidor para registrar alumnos, docentes y materias.
+
+Actividades:
+
+Crear función para registrar alumnos con validación de campos obligatorios y guardado en BD.
+
+Crear función para registrar docentes con validación y guardado.
+
+Crear función para registrar materias con validación y guardado.
+
+Definir respuestas claras de éxito o error en cada alta.
+
+Coordinarse con Gael para confirmar que los campos y tipos de datos son compatibles con las tablas.
+
+Subir al repositorio las funciones de alta en la rama de backend.
+
+Reporte Día 2:
+
+Funciones de alta implementadas (alumno, docente, materia).
+
+Validaciones básicas funcionando.
+
+Problemas con BD (si hubo) y cómo se resolvieron.
+
+Cambios subidos al repositorio.
+
+Día 3 – Backend de grupos
+Objetivo:
+Implementar las operaciones para crear y gestionar grupos.
+
+Actividades:
+
+Crear función para registrar un grupo con sus datos principales.
+
+Crear función para asignar un docente a un grupo.
+
+Crear función para asociar una materia a un grupo.
+
+Crear función para vincular alumnos a un grupo.
+
+Crear función para consultar los grupos asignados a un docente.
+
+Coordinarse con Gael para ajustar cualquier detalle entre backend y BD (claves, nombres, relaciones).
+
+Subir al repositorio las funciones de grupos en la rama de backend.
+
+Reporte Día 3:
+
+Funciones de creación y asignación de grupos listas.
+
+Consulta de grupos por docente lista.
+
+Cambios de backend subidos al repositorio.
+
+Día 4 – Backend del módulo docente
+Objetivo:
+Permitir que el docente consulte alumnos por grupo y registre calificaciones.
+
+Actividades:
+
+Crear función para obtener la lista de alumnos de un grupo.
+
+Crear función para registrar calificaciones parciales y finales por alumno en un grupo.
+
+Implementar la lógica de cálculo de promedio.
+
+Coordinarse con Gael para validar la estructura de calificaciones en BD.
+
+Subir al repositorio las funciones del módulo docente en la rama de backend.
+
+Reporte Día 4:
+
+Funciones de consulta de alumnos por grupo implementadas.
+
+Registro de calificaciones y cálculo de promedio listo.
+
+Cambios subidos al repositorio.
+
+Día 5 – Backend del módulo alumno
+Objetivo:
+Implementar funciones de consulta para el panel del alumno.
+
+Actividades:
+
+Crear función para obtener el horario del alumno (a partir de sus grupos y materias).
+
+Crear función para obtener el historial de materias cursadas y calificación final (kardex básico).
+
+Crear función para obtener calificaciones actuales del alumno.
+
+Coordinarse con Gael para definir las consultas necesarias.
+
+Subir al repositorio las funciones del módulo alumno en la rama de backend.
+
+Reporte Día 5:
+
+Funciones de horario, kardex y calificaciones actuales implementadas.
+
+Cambios subidos al repositorio.
+
+Día 6 – Correcciones de backend
+Objetivo:
+Corregir errores de lógica y datos en el backend tras las pruebas de integración.
+
+Actividades:
+
+Revisar las incidencias reportadas por César que afecten al backend.
+
+Corregir funciones que devuelven datos incorrectos, fallan o manejan mal errores.
+
+Coordinarse con Gael para ajustar consultas o estructura de BD cuando sea necesario.
+
+Coordinarse con Fabián y Alfredo si se requiere adaptar respuestas para la interfaz.
+
+Subir al repositorio las correcciones de backend.
+
+Reporte Día 6:
+
+Errores de backend corregidos.
+
+Coordinación con BD y frontend documentada.
+
+Correcciones subidas al repositorio.
+
+Día 7 – Documentación técnica (junto con Gael)
+Objetivo:
+Documentar las funciones del backend y su relación con la BD.
+
+Actividades:
+
+Elaborar un documento que liste las principales funciones del backend, indicando qué hace cada una y a qué módulo corresponde.
+
+Coordinarse con Gael para asegurar que este documento coincide con el diagrama de BD.
+
+Subir al repositorio el documento de funciones del backend.
+
+Reporte Día 7:
+
+Documento de funciones de backend elaborado.
+
+Coherencia revisada con BD.
+
+Documento subido al repositorio.
+
 
