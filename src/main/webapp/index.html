@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACADEX — Iniciar sesión</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+  
+  <link rel="stylesheet" href="css/acadex-styles.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <div class="branding-panel">
+    <div class="circle-deco c1"></div>
+    <div class="circle-deco c2"></div>
+
+    <div class="brand-logo">
+      <img src=".../assets/immahe-2.png" alt="ACADEX Logo" />
+      <span class="brand-name">ACADEX</span>
+    </div>
+
+    <div class="brand-headline">
+      <h1>Sistema Integral<br>de <span>Información</span><br>Académica</h1>
+      <p>Gestiona expedientes, calificaciones y trámites estudiantiles desde una sola plataforma.</p>
+    </div>
+
+    <div class="brand-features">
+      <div class="feat-item">
+        <div class="feat-icon">
+          <span class="material-symbols-rounded">school</span>
+        </div>
+        <span class="feat-text">Control de inscripciones y expedientes</span>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">
+          <span class="material-symbols-rounded">bar_chart</span>
+        </div>
+        <span class="feat-text">Reportes y estadísticas en tiempo real</span>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">
+          <span class="material-symbols-rounded">verified_user</span>
+        </div>
+        <span class="feat-text">Acceso seguro con roles diferenciados</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-panel">
+    <div class="login-header">
+      <h2>Iniciar sesión</h2>
+      <p>Ingresa tus credenciales institucionales para continuar</p>
+    </div>
+
+    <div class="alert-login" id="alertLogin">
+      <span class="material-symbols-rounded">error</span>
+      <span id="alertMsg">Usuario o contraseña incorrectos. Verifica tus datos.</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="usuario">Número de control</label>
+      <div class="input-wrap">
+        <span class="material-symbols-rounded input-icon">badge</span>
+        <input
+          class="form-input"
+          type="text"
+          id="usuario"
+          placeholder="ej. 12345678"
+          autocomplete="username"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="password">Contraseña</label>
+      <div class="input-wrap">
+        <span class="material-symbols-rounded input-icon">lock</span>
+        <input
+          class="form-input pw-input"
+          type="password"
+          id="password"
+          placeholder="••••••••"
+          autocomplete="current-password"
+        />
+        <button class="btn-toggle-pw" type="button" id="togglePw" aria-label="Mostrar contraseña">
+          <span class="material-symbols-rounded" id="eyeIcon">visibility</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="login-options">
+      <label class="check-wrap">
+        <input class="check-input" type="checkbox" id="remember" />
+        <span class="check-label">Recordar sesión</span>
+      </label>
+      <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <button class="btn-login" id="btnLogin" onclick="handleLogin()">
+      <div class="spinner" id="spinner"></div>
+      <span class="material-symbols-rounded" id="loginIcon">login</span>
+      <span id="btnText">Entrar al sistema</span>
+    </button>
+
+    <div class="login-footer">
+      ¿Necesitas ayuda? <a href="#">Contacta a soporte técnico</a><br>
+      <span style="margin-top:6px;display:block;">
+        Instituto Tecnológico de Los Mochis &nbsp;·&nbsp; ITM
+      </span>
+    </div>
+
+    <div class="version-badge">ACADEX v1.0</div>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
