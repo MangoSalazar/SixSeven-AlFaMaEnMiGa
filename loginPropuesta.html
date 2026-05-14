@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ACADEX — Iniciar sesión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+  <style>
+    /* ───── Variables ACADEX ───── */
+    :root {
+      --prussian:       #0C1631;
+      --prussian-light: #1a2a55;
+      --prussian-dark:  #060e20;
+      --sapphire:       #0062FF;
+      --sapphire-hover: #0050d0;
+      --sapphire-light: #3380ff;
+      --sky:            #4DB0FF;
+      --sky-bg:         #e8f5ff;
+      --sky-light:      #d0eaff;
+      --snow:           #F4F5F5;
+      --white:          #FFFFFF;
+      --mint:           #10B981;
+      --mint-bg:        #e6faf3;
+      --strawberry:     #EF4444;
+      --strawberry-bg:  #fdeaea;
+      --text-primary:   #0C1631;
+      --text-secondary: #4a5672;
+      --text-muted:     #8892aa;
+      --border:         #e0e4ee;
+      --border-light:   #edf0f7;
+      --radius-sm:      6px;
+      --radius-md:      10px;
+      --radius-lg:      14px;
+      --radius-xl:      18px;
+      --radius-2xl:     24px;
+      --shadow-sm:      0 1px 3px rgba(12,22,49,.06), 0 1px 2px rgba(12,22,49,.04);
+      --shadow-md:      0 4px 12px rgba(12,22,49,.08), 0 2px 6px rgba(12,22,49,.05);
+      --shadow-lg:      0 10px 30px rgba(12,22,49,.12), 0 4px 12px rgba(12,22,49,.07);
+      --shadow-xl:      0 20px 50px rgba(12,22,49,.16), 0 8px 20px rgba(12,22,49,.10);
+      --transition-fast:   .12s ease;
+      --transition-normal: .2s ease;
+      --transition-slow:   .35s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 14px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      background: var(--prussian-dark);
+      display: flex;
+      align-items: stretch;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    /* ───── Panel Izquierdo (Branding) ───── */
+    .branding-panel {
+      flex: 1;
+      background: linear-gradient(145deg, var(--prussian-dark) 0%, var(--prussian) 40%, #0d2060 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decoración de fondo */
+    .branding-panel::before {
+      content: '';
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,98,255,.18) 0%, transparent 70%);
+      top: -100px;
+      right: -80px;
+      pointer-events: none;
+    }
+    .branding-panel::after {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,176,255,.12) 0%, transparent 70%);
+      bottom: -60px;
+      left: 20px;
+      pointer-events: none;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 56px;
+      z-index: 1;
+    }
+    .brand-logo img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,98,255,.4));
+    }
+    .brand-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.5px;
+    }
+
+    .brand-headline {
+      z-index: 1;
+      margin-bottom: 24px;
+    }
+    .brand-headline h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -.03em;
+      margin-bottom: 16px;
+    }
+    .brand-headline h1 span {
+      background: linear-gradient(90deg, var(--sky) 0%, var(--sapphire-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .brand-headline p {
+      font-size: 1rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    .brand-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 1;
+      margin-top: 8px;
+    }
+    .feat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .feat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .feat-icon .material-symbols-rounded {
+      font-size: 18px;
+      color: var(--sky);
+    }
+    .feat-text {
+      font-size: .875rem;
+      color: rgba(255,255,255,.6);
+      font-weight: 400;
+    }
+
+    /* Círculos decorativos flotantes */
+    .circle-deco {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+    .c1 { width: 260px; height: 260px; top: 30%; right: -60px; }
+    .c2 { width: 160px; height: 160px; top: 55%; right: 40px; }
+
+    /* ───── Panel Derecho (Formulario) ───── */
+    .login-panel {
+      width: 480px;
+      flex-shrink: 0;
+      background: var(--snow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 52px 48px;
+      position: relative;
+      overflow-y: auto;
+    }
+
+    .login-header {
+      margin-bottom: 36px;
+    }
+    .login-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--prussian);
+      letter-spacing: -.03em;
+      margin-bottom: 6px;
+    }
+    .login-header p {
+      font-size: .875rem;
+      color: var(--text-muted);
+    }
+
+    /* ───── Formulario ───── */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .form-label {
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: .01em;
+    }
+    .input-wrap {
+      position: relative;
+    }
+    .input-icon {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 18px;
+      pointer-events: none;
+      transition: color var(--transition-fast);
+    }
+    .form-input {
+      width: 100%;
+      padding: 11px 14px 11px 42px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: .9375rem;
+      color: var(--text-primary);
+      background: var(--white);
+      outline: none;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+    .form-input::placeholder { color: var(--text-muted); }
+    .form-input:focus {
+      border-color: var(--sapphire);
+      box-shadow: 0 0 0 3px rgba(0,98,255,.10);
+    }
+    .form-input:focus + .input-icon,
+    .input-wrap:focus-within .input-icon {
+      color: var(--sapphire);
+    }
+
+    /* Toggle contraseña */
+    .btn-toggle-pw {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      transition: color var(--transition-fast);
+    }
+    .btn-toggle-pw:hover { color: var(--prussian); }
+    .btn-toggle-pw .material-symbols-rounded { font-size: 18px; }
+
+    .pw-input { padding-right: 42px; }
+
+    /* ───── Opciones login ───── */
+    .login-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      margin-top: -4px;
+    }
+    .check-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .check-input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--sapphire);
+      cursor: pointer;
+    }
+    .check-label {
+      font-size: .8125rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      user-select: none;
+    }
+    .forgot-link {
+      font-size: .8125rem;
+      color: var(--sapphire);
+      font-weight: 500;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .forgot-link:hover { color: var(--sapphire-hover); }
+
+    /* ───── Botón principal ───── */
+    .btn-login {
+      width: 100%;
+      padding: 13px 20px;
+      background: var(--prussian);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: -.01em;
+      transition: background var(--transition-fast), transform .1s ease, box-shadow var(--transition-fast);
+      box-shadow: 0 4px 16px rgba(12,22,49,.22);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-login::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,.07) 100%);
+    }
+    .btn-login:hover {
+      background: var(--prussian-light);
+      box-shadow: 0 6px 20px rgba(12,22,49,.28);
+      transform: translateY(-1px);
+    }
+    .btn-login:active { transform: translateY(0); }
+    .btn-login .material-symbols-rounded { font-size: 18px; }
+
+    /* Spinner */
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ───── Footer del panel ───── */
+    .login-footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: .8125rem;
+      color: var(--text-muted);
+    }
+    .login-footer a {
+      color: var(--sapphire);
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .login-footer a:hover { color: var(--sapphire-hover); }
+
+    /* ───── Alerta de error ───── */
+    .alert-login {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      background: var(--strawberry-bg);
+      border: 1px solid #f5b0b0;
+      border-radius: var(--radius-md);
+      font-size: .8125rem;
+      color: #b03030;
+      margin-bottom: 20px;
+    }
+    .alert-login.show { display: flex; }
+    .alert-login .material-symbols-rounded { font-size: 17px; color: #ef4444; flex-shrink: 0; }
+
+    /* ───── Badge versión ───── */
+    .version-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 24px;
+      font-size: .7rem;
+      color: var(--text-muted);
+      background: var(--border-light);
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    /* ───── Animaciones de entrada ───── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .brand-logo   { animation: fadeUp .5s ease both; animation-delay: .05s; }
+    .brand-headline { animation: fadeUp .5s ease both; animation-delay: .15s; }
+    .brand-features { animation: fadeUp .5s ease both; animation-delay: .28s; }
+    .login-header { animation: fadeUp .5s ease both; animation-delay: .1s; }
+    .form-group   { animation: fadeUp .4s ease both; }
+    .form-group:nth-child(1) { animation-delay: .18s; }
+    .form-group:nth-child(2) { animation-delay: .24s; }
+    .login-options { animation: fadeUp .4s ease both; animation-delay: .30s; }
+    .btn-login    { animation: fadeUp .4s ease both; animation-delay: .36s; }
+    .login-footer { animation: fadeUp .4s ease both; animation-delay: .48s; }
+
+    /* ───── Responsive ───── */
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .branding-panel { display: none; }
+      .login-panel { width: 100%; min-height: 100vh; }
+    }
+    @media (max-width: 480px) {
+      .login-panel { padding: 40px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Panel Izquierdo: Branding -->
+  <div class="branding-panel">
+    <div class="circle-deco c1"></div>
+    <div class="circle-deco c2"></div>
+
+    <div class="brand-logo">
+      <img src="assets/logo.png" alt="ACADEX Logo" />
+      <span class="brand-name">ACADEX</span>
+    </div>
+
+    <div class="brand-headline">
+      <h1>Sistema Integral<br>de <span>Información</span><br>Académica</h1>
+      <p>Gestiona expedientes, calificaciones y trámites estudiantiles desde una sola plataforma.</p>
+    </div>
+
+    <div class="brand-features">
+      <div class="feat-item">
+        <div class="feat-icon">
+          <span class="material-symbols-rounded">school</span>
+        </div>
+        <span class="feat-text">Control de inscripciones y expedientes</span>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">
+          <span class="material-symbols-rounded">bar_chart</span>
+        </div>
+        <span class="feat-text">Reportes y estadísticas en tiempo real</span>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">
+          <span class="material-symbols-rounded">verified_user</span>
+        </div>
+        <span class="feat-text">Acceso seguro con roles diferenciados</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel Derecho: Formulario -->
+  <div class="login-panel">
+    <div class="login-header">
+      <h2>Iniciar sesión</h2>
+      <p>Ingresa tus credenciales institucionales para continuar</p>
+    </div>
+
+    <!-- Alerta de error -->
+    <div class="alert-login" id="alertLogin">
+      <span class="material-symbols-rounded">error</span>
+      <span id="alertMsg">Usuario o contraseña incorrectos. Verifica tus datos.</span>
+    </div>
+
+    <!-- Formulario -->
+    <div class="form-group">
+      <label class="form-label" for="usuario">Usuario / Número de control</label>
+      <div class="input-wrap">
+        <span class="material-symbols-rounded input-icon">badge</span>
+        <input
+          class="form-input"
+          type="text"
+          id="usuario"
+          placeholder="ej. 12345678 o usuario@itm.edu.mx"
+          autocomplete="username"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="password">Contraseña</label>
+      <div class="input-wrap">
+        <span class="material-symbols-rounded input-icon">lock</span>
+        <input
+          class="form-input pw-input"
+          type="password"
+          id="password"
+          placeholder="••••••••"
+          autocomplete="current-password"
+        />
+        <button class="btn-toggle-pw" type="button" id="togglePw" aria-label="Mostrar contraseña">
+          <span class="material-symbols-rounded" id="eyeIcon">visibility</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="login-options">
+      <label class="check-wrap">
+        <input class="check-input" type="checkbox" id="remember" />
+        <span class="check-label">Recordar sesión</span>
+      </label>
+      <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <button class="btn-login" id="btnLogin" onclick="handleLogin()">
+      <div class="spinner" id="spinner"></div>
+      <span class="material-symbols-rounded" id="loginIcon">login</span>
+      <span id="btnText">Entrar al sistema</span>
+    </button>
+
+    <div class="login-footer">
+      ¿Necesitas ayuda? <a href="#">Contacta a soporte técnico</a><br>
+      <span style="margin-top:6px;display:block;">
+        Instituto Tecnológico de Los Mochis &nbsp;·&nbsp; ITM
+      </span>
+    </div>
+
+    <div class="version-badge">ACADEX v1.0</div>
+  </div>
+
+  <script>
+    // Toggle contraseña
+    const togglePw = document.getElementById('togglePw');
+    const pwInput  = document.getElementById('password');
+    const eyeIcon  = document.getElementById('eyeIcon');
+
+    togglePw.addEventListener('click', () => {
+      const isHidden = pwInput.type === 'password';
+      pwInput.type = isHidden ? 'text' : 'password';
+      eyeIcon.textContent = isHidden ? 'visibility_off' : 'visibility';
+    });
+
+    // Submit con animación
+    function handleLogin() {
+      const user = document.getElementById('usuario').value.trim();
+      const pass = document.getElementById('password').value;
+      const btn  = document.getElementById('btnLogin');
+      const spinner = document.getElementById('spinner');
+      const icon    = document.getElementById('loginIcon');
+      const text    = document.getElementById('btnText');
+      const alert   = document.getElementById('alertLogin');
+      
+      // Reiniciamos la alerta
+      alert.classList.remove('show');
+
+      // 1. Validación de campos vacíos
+      if (!user || !pass) {
+        document.getElementById('alertMsg').textContent = 'Por favor completa todos los campos.';
+        alert.classList.add('show');
+        return;
+      }
+
+      // 2. Validación de longitud mínima para el usuario (ej. 5 caracteres)
+      if (user.length < 5) {
+        document.getElementById('alertMsg').textContent = 'El usuario o número de control debe tener al menos 5 caracteres.';
+        alert.classList.add('show');
+        return;
+      }
+
+      // 3. Validación de formato para evitar caracteres extraños en el usuario (permite letras, números, puntos, @, - y _)
+      const userRegex = /^[a-zA-Z0-9._@\-]+$/;
+      if (!userRegex.test(user)) {
+        document.getElementById('alertMsg').textContent = 'El formato del usuario no es válido. No uses espacios ni caracteres especiales.';
+        alert.classList.add('show');
+        return;
+      }
+
+      // 4. Validación de longitud mínima para la contraseña (ej. 6 caracteres)
+      if (pass.length < 6) {
+        document.getElementById('alertMsg').textContent = 'La contraseña debe tener al menos 6 caracteres.';
+        alert.classList.add('show');
+        return;
+      }
+
+      // Simular carga
+      btn.disabled = true;
+      spinner.style.display = 'block';
+      icon.style.display = 'none';
+      text.textContent = 'Verificando...';
+
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        icon.style.display = '';
+        text.textContent = 'Entrar al sistema';
+        btn.disabled = false;
+
+        // Demo: mostrar error si no es "admin"
+        if (user !== 'admin') {
+          document.getElementById('alertMsg').textContent = 'Usuario o contraseña incorrectos. Verifica tus datos.';
+          alert.classList.add('show');
+        } else {
+          icon.textContent = 'check_circle';
+          btn.style.background = 'var(--mint)';
+          text.textContent = '¡Bienvenido!';
+        }
+      }, 1400);
+    }
+
+    // Enter para enviar
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleLogin();
+    });
+  </script>
+
+</body>
+  
+</html>
