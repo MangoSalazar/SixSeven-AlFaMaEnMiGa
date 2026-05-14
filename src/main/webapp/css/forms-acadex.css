@@ -1,0 +1,9 @@
+:root {
+  --prussian: #0C1631;    /* Títulos y botones [cite: 36] */
+  --sapphire: #0062FF;    /* Iconos y enlaces [cite: 37] */
+  --cool-sky: #4DB0FF;    /* Detalles decorativos [cite: 38] */
+  --bright-snow: #F4F5F5; /* Fondo de pantalla [cite: 39] */
+  --white: #FFFFFF;       /* Tarjetas de formulario [cite: 40] */
+  --mint: #10B981;        /* Éxito [cite: 43] */
+  --strawberry: #EF4444;  /* Error [cite: 50] */
+}
