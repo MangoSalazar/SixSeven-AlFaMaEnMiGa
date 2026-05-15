@@ -267,3 +267,80 @@
   font-size: 0.95rem;
   font-family: 'DM Sans', sans-serif;
 }
+/* 
+   ESTILOS DE TABLAS DE CONTROL (Agregado para Mis Grupos)
+  */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.acadex-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.acadex-table th {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px;
+  border-bottom: 2px solid #edf2f7;
+}
+
+.acadex-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid #edf2f7; /* Líneas divisorias tenues */
+  color: var(--prussian);
+  font-size: 0.95rem;
+}
+
+/* Efecto interactivo minimalista en las filas */
+.table-row-selectable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.table-row-selectable:hover {
+  background-color: rgba(0, 98, 255, 0.03); /* Resalte Sapphire sutil */
+}
+
+.table-row-selectable:hover .btn-table-action {
+  background-color: var(--sapphire);
+  color: white;
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
+/* Indicador amigable de total de alumnos */
+.badge-count {
+  background-color: #e2e8f0;
+  color: var(--prussian);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Botón de acción rápido dentro de la tabla */
+.btn-table-action {
+  background: transparent;
+  border: none;
+  color: var(--sapphire);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}

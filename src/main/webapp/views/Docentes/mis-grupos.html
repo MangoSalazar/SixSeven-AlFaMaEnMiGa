@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACADEX — Mis Grupos</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+  
+  <link rel="stylesheet" href="../../css/acadex-styles.css">
+  <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/immahe-2.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Docente</p>
+                <a href="#" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">grid_view</span>
+                    Mis Grupos
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h1 class="topbar-title">Panel de Docente <span class="topbar-sub">/ Mis Grupos Asignados</span></h1>
+                <div class="topbar-actions">
+                    <div class="avatar">AJ</div>
+                </div>
+            </header>
+
+            <section class="content content-centered bg-acadex">
+                <div class="form-card">
+
+                    <header class="form-title-group">
+                        <h1 class="form-title">Mis Grupos</h1>
+                        <p class="form-subtitle">Selecciona un grupo para gestionar las listas de asistencia y capturar calificaciones.</p>
+                    </header>
+
+                    <div class="table-container">
+                        <table class="acadex-table">
+                            <thead>
+                                <tr>
+                                    <th>Materia</th>
+                                    <th>Clave</th>
+                                    <th>Aula</th>
+                                    <th>Horario</th>
+                                    <th>Alumnos</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-row-selectable" onclick="seleccionarGrupo(1)">
+                                    <td class="font-bold text-prussian">Estructura de Datos</td>
+                                    <td>AED-1283</td>
+                                    <td>Aula L2</td>
+                                    <td>08:00 - 09:00</td>
+                                    <td><span class="badge-count">28</span></td>
+                                    <td>
+                                        <button class="btn-table-action">
+                                            <span class="material-symbols-rounded">chevron_right</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="table-row-selectable" onclick="seleccionarGrupo(2)">
+                                    <td class="font-bold text-prussian">Programación Web</td>
+                                    <td>TCH-1024</td>
+                                    <td>Laboratorio C</td>
+                                    <td>12:00 - 13:00</td>
+                                    <td><span class="badge-count">32</span></td>
+                                    <td>
+                                        <button class="btn-table-action">
+                                            <span class="material-symbols-rounded">chevron_right</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Función local requerida por el objetivo del Día 3
+        function seleccionarGrupo(idAsignacion) {
+            console.log("Grupo seleccionado (id_asignacion):", idAsignacion);
+            // Listo para implementar el fetch con Milton mañana
+        }
+    </script>
+</body>
+</html>
