@@ -165,3 +165,105 @@
 
 /* ERROR */
 .input-error { border-color: var(--strawberry) !important; }
+/* ============================================================
+   ESTADOS DE VALIDACIÓN Y UTILIDADES (Agregado para Materias)
+   ============================================================ */
+
+/* Centrado de la tarjeta dentro del layout principal */
+.content-centered {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Estados dinámicos de validación desde JS */
+.is-error .input-wrapper {
+  border-color: var(--strawberry) !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+.is-success .input-wrapper {
+  border-color: #10B981 !important;
+}
+
+/* Elementos de validación (asteriscos, mensajes, contadores) */
+.form-required {
+  color: var(--strawberry);
+}
+.form-error-msg {
+  display: none;
+  color: var(--strawberry);
+  margin-top: 4px;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+.form-hint-msg {
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+  font-size: 0.8rem;
+}
+.form-msg-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 0.8rem;
+}
+.form-counter {
+  color: #64748b;
+  margin-left: auto;
+}
+.form-actions-full {
+  grid-column: 1 / -1;
+}
+
+/* Logo transparente */
+.brand-logo-transparent {
+  background: transparent !important;
+}
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Ocultar preview JSON */
+.hidden-preview {
+  display: none;
+}
+
+/* Animación y diseño del Spinner del botón */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.btn-spinner-icon {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Contenedor y texto del Toast de Notificaciones */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.toast-msg-text {
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: 'DM Sans', sans-serif;
+}
