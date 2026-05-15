@@ -220,3 +220,63 @@ CREATE TABLE GRUPO_ALUMNO
     CONSTRAINT fk_lista_grupo FOREIGN KEY (id_grupo) REFERENCES GRUPO (id_grupo),
     CONSTRAINT fk_lista_alumno FOREIGN KEY (id_alumno) REFERENCES ALUMNO (id_alumno)
 );
+
+-- TRIGGERS DE VALIDACIÓN DE DATOS
+
+-- 1. Limpieza de triggers para evitar errores de duplicados
+DROP TRIGGER IF EXISTS trg_validar_alumno_insert;
+DROP TRIGGER IF EXISTS trg_validar_docente_insert;
+DROP TRIGGER IF EXISTS trg_validar_materia_insert;
+DROP TRIGGER IF EXISTS trg_validar_usuario_insert;
+
+DELIMITER //
+
+-- 2. Validación para ALUMNO (Ajustado a tus columnas reales)
+CREATE TRIGGER trg_validar_alumno_insert
+    BEFORE INSERT ON ALUMNO
+    FOR EACH ROW
+BEGIN
+    -- Validamos que el número de control tenga al menos 8 dígitos
+    IF LENGTH(NEW.numero_control) < 8 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El número de control debe tener al menos 8 caracteres.';
+END IF;
+
+-- Nota: Quitamos la validación de correo porque no existe en esta tabla
+END; //
+
+-- 3. Validación para DOCENTE (Asegúrate que estas columnas sí existan en Docente)
+CREATE TRIGGER trg_validar_docente_insert
+    BEFORE INSERT ON DOCENTE
+    FOR EACH ROW
+BEGIN
+    -- Si en docente sí tienes RFC, esta línea se queda:
+    IF LENGTH(NEW.rfc) < 12 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El RFC debe tener entre 12 y 13 caracteres.';
+END IF;
+END; //
+
+-- 4. Validación para MATERIA
+CREATE TRIGGER trg_validar_materia_insert
+    BEFORE INSERT ON MATERIA
+    FOR EACH ROW
+BEGIN
+    IF NEW.creditos <= 0 OR NEW.horas_teoricas < 0 OR NEW.horas_practicas < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Los créditos y horas deben ser valores positivos.';
+END IF;
+END; //
+
+-- 5. Validación para USUARIO
+CREATE TRIGGER trg_validar_usuario_insert
+    BEFORE INSERT ON USUARIO
+    FOR EACH ROW
+BEGIN
+    IF LENGTH(NEW.password) < 5 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: La contraseña es demasiado corta (mínimo 5 caracteres).';
+END IF;
+END; //
+
+DELIMITER ;
