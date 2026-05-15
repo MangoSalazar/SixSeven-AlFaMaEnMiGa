@@ -75,9 +75,23 @@ btnGuardar.addEventListener('click', async () => {
         mostrarToast('error', 'Todos los campos son obligatorios.');
         return;
     }
+    
+    if (campoInicio.value < "07:00" || campoInicio.value > "21:00" || campoFin.value < "07:00" || campoFin.value > "21:00") {
+        mostrarToast('error', 'El horario seleccionado está fuera del rango operativo de la institución (7:00 AM a 9:00 PM).');
+        return;
+    }
 
     if (campoInicio.value >= campoFin.value) {
         mostrarToast('error', 'La hora de inicio debe ser menor a la hora de fin.');
+        return;
+    }
+
+    const [horaIni, minIni] = campoInicio.value.split(':').map(Number);
+    const [horaFin, minFin] = campoFin.value.split(':').map(Number);
+    const duracionHoras = (horaFin + minFin / 60) - (horaIni + minIni / 60);
+
+    if (duracionHoras > 2) {
+        mostrarToast('error', 'Restricción de horario: Las asignaciones de clase no pueden exceder las 2 horas seguidas.');
         return;
     }
 

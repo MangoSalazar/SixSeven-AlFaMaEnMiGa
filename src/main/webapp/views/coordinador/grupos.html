@@ -90,53 +90,60 @@
                             <small id="error-docente" class="form-error-msg"></small>
                         </div>
 
-                        <div class="input-group" id="wrap-aula_periodo" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div>
-                                <label class="input-label">Aula <span class="form-required">*</span></label>
-                                <div class="input-wrapper">
-                                    <span class="material-symbols-rounded icon-accent">meeting_room</span>
-                                    <select id="campo-aula" required>
-                                        <option value="" disabled selected>Cargando...</option>
-                                    </select>
-                                </div>
+                        <div class="input-group" id="wrap-aula">
+                            <label class="input-label">Aula <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">meeting_room</span>
+                                <select id="campo-aula" required>
+                                    <option value="" disabled selected>Cargando...</option>
+                                </select>
                             </div>
-                            <div>
-                                <label class="input-label">Periodo <span class="form-required">*</span></label>
-                                <div class="input-wrapper">
-                                    <span class="material-symbols-rounded icon-accent">calendar_month</span>
-                                    <select id="campo-periodo" required>
-                                        <option value="" disabled selected>Cargando...</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <small id="error-aula" class="form-error-msg"></small>
                         </div>
 
-                        <div class="input-group" id="wrap-horario" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
-                            <div>
-                                <label class="input-label">Día <span class="form-required">*</span></label>
-                                <div class="input-wrapper">
-                                    <select id="campo-dia" required>
-                                        <option value="" disabled selected>Día</option>
-                                        <option value="Lunes">Lunes</option>
-                                        <option value="Martes">Martes</option>
-                                        <option value="Miércoles">Miércoles</option>
-                                        <option value="Jueves">Jueves</option>
-                                        <option value="Viernes">Viernes</option>
-                                    </select>
-                                </div>
+                        <div class="input-group" id="wrap-periodo">
+                            <label class="input-label">Periodo <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">calendar_month</span>
+                                <select id="campo-periodo" required>
+                                    <option value="" disabled selected>Cargando...</option>
+                                </select>
                             </div>
-                            <div>
-                                <label class="input-label">Inicio <span class="form-required">*</span></label>
-                                <div class="input-wrapper">
-                                    <input type="time" id="campo-inicio" required>
-                                </div>
+                            <small id="error-periodo" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-dia">
+                            <label class="input-label">Día de la semana <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">calendar_today</span>
+                                <select id="campo-dia" required>
+                                    <option value="" disabled selected>Selecciona Día</option>
+                                    <option value="Lunes">Lunes</option>
+                                    <option value="Martes">Martes</option>
+                                    <option value="Miércoles">Miércoles</option>
+                                    <option value="Jueves">Jueves</option>
+                                    <option value="Viernes">Viernes</option>
+                                </select>
                             </div>
-                            <div>
-                                <label class="input-label">Fin <span class="form-required">*</span></label>
-                                <div class="input-wrapper">
-                                    <input type="time" id="campo-fin" required>
-                                </div>
+                            <small id="error-dia" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-inicio">
+                            <label class="input-label">Hora de Inicio <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">schedule</span>
+                                <input type="time" id="campo-inicio" min="07:00" max="21:00" required>
                             </div>
+                            <small id="error-inicio" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-fin">
+                            <label class="input-label">Hora de Fin <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">more_time</span>
+                                <input type="time" id="campo-fin" min="07:00" max="21:00" required>
+                            </div>
+                            <small id="error-fin" class="form-error-msg"></small>
                         </div>
 
                         <div class="form-actions form-actions-full">
