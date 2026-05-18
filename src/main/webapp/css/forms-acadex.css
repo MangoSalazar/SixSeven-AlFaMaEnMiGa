@@ -344,3 +344,44 @@
   transition: all 0.2s;
   cursor: pointer;
 }
+/* ============================================================
+   COMPONENTES DE CAPTURA EN TABLAS (Día 4)
+   ============================================================ */
+
+.table-input-score {
+  width: 90px;
+  padding: 8px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--prussian);
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.table-input-score:focus {
+  border-color: var(--sapphire);
+  box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
+}
+
+/* Badges de estatus alineados con la lógica del Kardex */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.status-badge.approved {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #10B981; 
+}
+
+.status-badge.reproved {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: var(--strawberry); /* Strawberry Red para Reprobados */
+}

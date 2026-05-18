@@ -57,7 +57,7 @@
                                     <th>Aula</th>
                                     <th>Horario</th>
                                     <th>Alumnos</th>
-                                    <th>Acción</th>
+                                    <th>Revisar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +66,7 @@
                                     <td>AED-1283</td>
                                     <td>Aula L2</td>
                                     <td>08:00 - 09:00</td>
-                                    <td><span class="badge-count">28</span></td>
+                                    <td><span class="badge-count">2</span></td>
                                     <td>
                                         <button class="btn-table-action">
                                             <span class="material-symbols-rounded">chevron_right</span>
@@ -78,7 +78,7 @@
                                     <td>TCH-1024</td>
                                     <td>Laboratorio C</td>
                                     <td>12:00 - 13:00</td>
-                                    <td><span class="badge-count">32</span></td>
+                                    <td><span class="badge-count">2</span></td>
                                     <td>
                                         <button class="btn-table-action">
                                             <span class="material-symbols-rounded">chevron_right</span>
@@ -97,7 +97,7 @@
     <script>
         function seleccionarGrupo(idAsignacion) {
             console.log("Grupo seleccionado (id_asignacion):", idAsignacion);
-           
+            window.location.href = "alumnos-grupo.html?id_asignacion=" + idAsignacion;
         }
     </script>
 </body>
