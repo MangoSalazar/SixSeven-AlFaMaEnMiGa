@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACADEX — Alumnos de la Carrera</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    
+    <link rel="stylesheet" href="../../css/acadex-styles.css">
+    <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Administración</p>
+                <a href="materias.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">book</span>
+                    Materias
+                </a>
+                <a href="grupos.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">groups</span>
+                    Grupos / Horarios
+                </a>
+                <a href="alumnos-carrera.html" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">school</span>
+                    Alumnos de la carrera
+                </a>
+                <a href="../Docentes/alta.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">person_4</span>
+                    Docentes
+                </a>
+            </nav>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <h1 class="topbar-title">Gestión de Alumnos <span class="topbar-sub">/ Alumnos de la Carrera</span></h1>
+                <div class="topbar-actions">
+                    <div class="avatar">AJ</div>
+                </div>
+            </header>
+
+            <section class="content content-centered bg-acadex">
+                <div class="form-card" style="max-width: 900px;"> <div class="brand-header">
+                        <div class="brand-logo-circle brand-logo-transparent">
+                            <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo" class="brand-logo-img">
+                        </div>
+                        <span class="brand-name-text">Acadex</span>
+                    </div>
+
+                    <header class="form-title-group">
+                        <h1 class="form-title">Consulta de Alumnos</h1>
+                        <p class="form-subtitle">Filtra y visualiza el padrón de estudiantes inscritos en la carrera.</p>
+                    </header>
+
+                    <div id="filtros-alumnos">
+                        
+                    </div>
+
+                    <div id="resultados-alumnos" style="margin-top: 2rem;">
+                        
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
