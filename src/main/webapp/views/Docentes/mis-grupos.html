@@ -35,7 +35,12 @@
         <main class="main">
             <header class="topbar">
                 <h1 class="topbar-title">Panel de Docente <span class="topbar-sub">/ Mis Grupos Asignados</span></h1>
-                <div class="topbar-actions">
+                
+                <div class="topbar-actions" style="cursor: pointer;" onclick="window.location.href='perfil-docente.html'">
+                    <div style="text-align: right; margin-right: 12px;">
+                        <p class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Alejandro Juárez</p>
+                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Emp: DOC-2026</p>
+                    </div>
                     <div class="avatar">AJ</div>
                 </div>
             </header>
@@ -60,32 +65,7 @@
                                     <th>Revisar</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="table-row-selectable" onclick="seleccionarGrupo(1)">
-                                    <td class="font-bold text-prussian">Estructura de Datos</td>
-                                    <td>AED-1283</td>
-                                    <td>Aula L2</td>
-                                    <td>08:00 - 09:00</td>
-                                    <td><span class="badge-count">2</span></td>
-                                    <td>
-                                        <button class="btn-table-action">
-                                            <span class="material-symbols-rounded">chevron_right</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="table-row-selectable" onclick="seleccionarGrupo(2)">
-                                    <td class="font-bold text-prussian">Programación Web</td>
-                                    <td>TCH-1024</td>
-                                    <td>Laboratorio C</td>
-                                    <td>12:00 - 13:00</td>
-                                    <td><span class="badge-count">2</span></td>
-                                    <td>
-                                        <button class="btn-table-action">
-                                            <span class="material-symbols-rounded">chevron_right</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tablaGrupos"></tbody>
                         </table>
                     </div>
 
@@ -95,8 +75,42 @@
     </div>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulación de carga desde tabla HORARIO unida a MATERIA y AULA
+            const payloadGrupos = [
+                { id_asignacion: 1, materia: "Estructura de Datos", clave: "AED-1283", aula: "Aula L2", horario: "08:00 - 09:00", alumnos: 28 },
+                { id_asignacion: 2, materia: "Programación Web", clave: "TCH-1024", aula: "Laboratorio C", horario: "12:00 - 13:00", alumnos: 32 }
+            ];
+
+            renderizarGrupos(payloadGrupos);
+        });
+
+        function renderizarGrupos(grupos) {
+            const tbody = document.getElementById('tablaGrupos');
+            tbody.innerHTML = "";
+
+            grupos.forEach(grupo => {
+                const tr = document.createElement('tr');
+                tr.className = "table-row-selectable";
+                tr.setAttribute('onclick', `seleccionarGrupo(${grupo.id_asignacion})`);
+                
+                tr.innerHTML = `
+                    <td class="font-bold text-prussian">${grupo.materia}</td>
+                    <td>${grupo.clave}</td>
+                    <td>${grupo.aula}</td>
+                    <td>${grupo.horario}</td>
+                    <td><span class="badge-count">${grupo.alumnos}</span></td>
+                    <td>
+                        <button class="btn-table-action">
+                            <span class="material-symbols-rounded">chevron_right</span>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
         function seleccionarGrupo(idAsignacion) {
-            console.log("Grupo seleccionado (id_asignacion):", idAsignacion);
             window.location.href = "alumnos-grupo.html?id_asignacion=" + idAsignacion;
         }
     </script>
