@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil Estudiantil — ACADEX</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+  
+  <link rel="stylesheet" href="../../css/acadex-styles.css">
+  <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div style="min-height: 100vh; display: flex; justify-content: center; align-items: center; background-color: var(--bg-main); padding: 20px;">
+        <div class="form-card" style="max-width: 500px; width: 100%; text-align: center; position: relative;">
+            
+            <button class="btn btn-secondary" style="position: absolute; top: 20px; left: 20px; padding: 6px 12px; display: flex; align-items: center; gap: 6px;" onclick="window.location.href='dashboard.html'">
+                <span class="material-symbols-rounded" style="font-size: 1.2rem;">arrow_back</span> Volver
+            </button>
+
+            <div style="margin-top: 30px; margin-bottom: 20px; display: flex; justify-content: center;">
+                <div id="profileAvatar" style="width: 90px; height: 90px; background-color: var(--prussian); color: white; font-size: 2.2rem; font-weight: 700; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: var(--shadow-sm);"></div>
+            </div>
+
+            <h1 id="profileName" class="form-title" style="margin-bottom: 4px;"></h1>
+            <p id="profileRole" style="font-weight: 500; color: #64748b; margin-bottom: 24px;"></p>
+
+            <div style="text-align: left; background-color: #f8fafc; padding: 16px; border-radius: 12px; margin-bottom: 30px; display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                    <span style="font-size: 0.8rem; font-weight: 600; color: #94a3b8; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Número de Control</span>
+                    <span id="profileControl" class="font-bold text-prussian" style="font-size: 1rem;"></span>
+                </div>
+                <div>
+                    <span style="font-size: 0.8rem; font-weight: 600; color: #94a3b8; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Correo Institucional</span>
+                    <span id="profileEmail" class="font-bold text-prussian" style="font-size: 1rem;"></span>
+                </div>
+            </div>
+
+            <button class="btn" style="background-color: #fee2e2; color: #ef4444; border: 1.5px solid #fca5a5; width: 100%; justify-content: center; gap: 8px;" onclick="window.location.href='../../index.html'">
+                <span class="material-symbols-rounded">logout</span> Cerrar Sesión
+            </button>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            inicializarPerfil();
+        });
+
+        function inicializarPerfil() {
+        
+            // SIMULACIÓN DE DATOS
+     
+            const payloadPerfil = {
+                initials: "FS",
+                nombre: "Fabián Montes",
+                rol: "Estudiante / Alumno",
+                numero_control: "20210634", 
+                correo: "fabian.Montes@mochis.tecnm.mx"
+            };
+
+           
+            renderizarPerfil(payloadPerfil);
+        }
+
+        function renderizarPerfil(datos) {
+            document.getElementById('profileAvatar').textContent = datos.initials;
+            document.getElementById('profileName').textContent = datos.nombre;
+            document.getElementById('profileRole').textContent = datos.rol;
+            document.getElementById('profileControl').textContent = datos.numero_control;
+            document.getElementById('profileEmail').textContent = datos.correo;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACADEX — Dashboard Alumno</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+  
+  <link rel="stylesheet" href="../../css/acadex-styles.css">
+  <link rel="stylesheet" href="../../css/forms-acadex.css">
+  
+  <style>
+    .btn-quick-access {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 14px 16px;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 10px;
+        color: var(--prussian);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .btn-quick-access:hover {
+        background: #f1f5f9;
+        border-color: var(--sapphire);
+        color: var(--sapphire);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+    }
+    .class-today-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px dashed #e2e8f0;
+    }
+    .class-today-item:last-child {
+        border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Portal Estudiantil</p>
+                <a href="dashboard.html" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">dashboard</span>
+                    Dashboard
+                </a>
+                <a href="horario.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">calendar_month</span>
+                    Mi Horario
+                </a>
+                <a href="kardex.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">analytics</span>
+                    Mi Kardex
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main" style="overflow-y: auto;">
+            <header class="topbar">
+                <h1 class="topbar-title">Información Escolar <span class="topbar-sub">/ Dashboard</span></h1>
+                
+                <div class="topbar-actions" style="cursor: pointer;" onclick="window.location.href='perfil-alumno.html'">
+                    <div style="text-align: right; margin-right: 12px;">
+                        <p class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Fabián Montes</p>
+                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Control: 20210634</p>
+                    </div>
+                    <div class="avatar">FS</div>
+                </div>
+            </header>
+
+            <section class="content bg-acadex" style="display: flex; flex-direction: column; gap: 24px; justify-content: flex-start !important; align-items: stretch !important; padding: 24px; min-height: auto;">
+                
+                <div class="form-card" style="max-width: 100%; margin: 0; width: 100%;">
+                    <header class="form-title-group" style="margin-bottom: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-rounded text-strawberry" style="font-size: 1.6rem;">campaign</span>
+                            <h1 class="form-title" style="margin: 0; font-size: 1.2rem;">Avisos Recientes</h1>
+                        </div>
+                    </header>
+                    <div style="background: rgba(239, 68, 68, 0.05); padding: 16px; border-radius: 12px; border-left: 5px solid var(--strawberry); margin-top: 10px;">
+                        <p style="margin: 0 0 4px 0; font-weight: 700; color: var(--prussian); font-size: 0.95rem;">Período de Reinscripciones</p>
+                        <p style="margin: 0; font-size: 0.85rem; color: #64748b; line-height: 1.4;">El proceso inicia el próximo 15 de Junio. Recuerda verificar que no tengas adeudos financieros antes de tu fecha asignada de carga académica.</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; width: 100%;">
+                    <div class="form-card" style="padding: 24px; max-width: 100%; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <p style="color: #64748b; font-weight: 700; font-size: 0.8rem; margin-bottom: 8px; letter-spacing: 0.5px;">PROMEDIO GENERAL</p>
+                        <h2 id="kpiGPA" style="font-size: 2.8rem; font-weight: 700; color: var(--sapphire); margin: 0; font-family: 'DM Sans', sans-serif;">0.0</h2>
+                    </div>
+
+                    <div class="form-card" style="padding: 24px; max-width: 100%; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <p style="color: #64748b; font-weight: 700; font-size: 0.8rem; margin-bottom: 4px; letter-spacing: 0.5px;">AVANCE DE CARRERA</p>
+                        <h2 id="kpiProgress" style="font-size: 2.8rem; font-weight: 700; color: var(--prussian); margin: 0; font-family: 'DM Sans', sans-serif;">0%</h2>
+                        <div style="width: 80%; background: #e2e8f0; height: 6px; border-radius: 10px; margin-top: 8px; overflow: hidden;">
+                            <div id="barProgress" style="width: 0%; height: 100%; background: var(--sapphire); transition: width 0.5s ease;"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-card" style="padding: 24px; max-width: 100%; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <p style="color: #64748b; font-weight: 700; font-size: 0.8rem; margin-bottom: 8px; letter-spacing: 0.5px;">CRÉDITOS ACUMULADOS</p>
+                        <h2 style="font-size: 2.8rem; font-weight: 700; color: #10B981; margin: 0; font-family: 'DM Sans', sans-serif;">
+                            <span id="kpiCredits">0</span>
+                            <span style="font-size: 1.3rem; color: #94a3b8; font-weight: 500;">/ 260</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; align-items: stretch;">
+                    
+                    <div class="form-card" style="max-width: 100%; margin: 0; width: 100%; display: flex; flex-direction: column;">
+                        <header class="form-title-group" style="margin-bottom: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-rounded text-sapphire" style="font-size: 1.6rem;">schedule</span>
+                                <h1 class="form-title" style="margin: 0; font-size: 1.2rem;">Clases de Hoy</h1>
+                            </div>
+                        </header>
+                        <div id="listaClasesHoy" style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"></div>
+                    </div>
+
+                    <div class="form-card" style="max-width: 100%; margin: 0; width: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                        <header class="form-title-group" style="margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-rounded text-sapphire" style="font-size: 1.6rem;">bar_chart</span>
+                                <h1 class="form-title" style="margin: 0; font-size: 1.2rem;">Estatus de Créditos por Área</h1>
+                            </div>
+                        </header>
+
+                        <div style="display: flex; flex-direction: column; gap: 16px; flex-grow: 1; justify-content: center;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; color: var(--prussian);">
+                                    <span>Ciencias Básicas e Ingeniería</span>
+                                    <span>65 / 100 u</span>
+                                </div>
+                                <div style="width: 100%; background: #f1f5f9; height: 12px; border-radius: 6px; overflow: hidden;">
+                                    <div style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--prussian), var(--sapphire)); border-radius: 6px;"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; color: var(--prussian);">
+                                    <span>Materias de Especialidad</span>
+                                    <span>32 / 90 u</span>
+                                </div>
+                                <div style="width: 100%; background: #f1f5f9; height: 12px; border-radius: 6px; overflow: hidden;">
+                                    <div style="width: 35%; height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 6px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-card" style="max-width: 100%; margin: 0; width: 100%;">
+                    <header class="form-title-group" style="margin-bottom: 16px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-rounded text-sapphire" style="font-size: 1.6rem;">bolt</span>
+                            <h1 class="form-title" style="margin: 0; font-size: 1.2rem;">Trámites y Accesos Rápidos</h1>
+                        </div>
+                    </header>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%;">
+                        <button class="btn-quick-access" onclick="window.location.href='kardex.html'">
+                            <span class="material-symbols-rounded" style="color: var(--sapphire);">description</span>
+                            Descargar Kárdex de Calificaciones
+                        </button>
+                        
+                        <button class="btn-quick-access" onclick="window.location.href='horario.html'">
+                            <span class="material-symbols-rounded" style="color: #10B981;">calendar_month</span>
+                            Ver mi Horario de Clases
+                        </button>
+                        
+                        <button class="btn-quick-access" onclick="window.location.href='perfil-alumno.html'">
+                            <span class="material-symbols-rounded" style="color: var(--prussian);">manage_accounts</span>
+                            Configurar Datos de mi Cuenta
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const payloadDashboard = {
+                gpa: 88.5,
+                progress: "35%",
+                credits: 112,
+                clasesHoy: [
+                    { materia: "Estructura de Datos", hora: "08:00 - 09:00", aula: "Aula L2" },
+                    { materia: "Programación Web", hora: "12:00 - 13:00", aula: "Laboratorio C" }
+                ]
+            };
+
+            document.getElementById('kpiGPA').textContent = payloadDashboard.gpa.toFixed(1);
+            document.getElementById('kpiProgress').textContent = payloadDashboard.progress;
+            document.getElementById('kpiCredits').textContent = payloadDashboard.credits;
+
+            renderizarClasesHoy(payloadDashboard.clasesHoy);
+
+            setTimeout(() => {
+                document.getElementById('barProgress').style.width = payloadDashboard.progress;
+            }, 200);
+        });
+
+        function renderizarClasesHoy(clases) {
+            const contenedor = document.getElementById('listaClasesHoy');
+            contenedor.innerHTML = "";
+
+            clases.forEach(clase => {
+                const div = document.createElement('div');
+                div.className = "class-today-item";
+                div.innerHTML = `
+                    <div>
+                        <p style="margin: 0; font-weight: 700; color: var(--prussian); font-size: 0.95rem;">${clase.materia}</p>
+                        <p style="margin: 0; font-size: 0.8rem; color: #64748b; display: flex; align-items: center; gap: 4px;">
+                            <span class="material-symbols-rounded" style="font-size: 0.9rem;">location_on</span> ${clase.aula}
+                        </p>
+                    </div>
+                    <div style="background: #e0f2fe; color: #0369a1; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;">
+                        ${clase.hora}
+                    </div>
+                `;
+                contenedor.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
