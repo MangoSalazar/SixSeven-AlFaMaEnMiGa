@@ -75,94 +75,188 @@ Flujo de creación y asignación probado.
 
 Cambios subidos al repositorio.
 
-Día 4 – Refinamiento del módulo docente (diseño)
+Día 4 – Vista “Alumnos de la carrera” y limpieza de altas
 Objetivo:
-Mejorar la usabilidad del módulo docente.
+Construir una pantalla para coordinación donde se consulte el listado de alumnos que ya están dados de alta en el sistema (por admisión y pago), y eliminar las pantallas antiguas de alta manual
+(alumnos, docentes, materias) que ya no corresponden al rol del coordinador.
 
 Actividades:
 
-Revisar las pantallas de “Mis grupos” y “Alumnos del grupo” para mejorar la presentación de tablas, formularios y mensajes.
+Eliminar o deshabilitar las vistas y botones que permitían:
 
-Aplicar la línea gráfica de forma consistente.
+Dar de alta alumnos desde el módulo del coordinador.
 
-Coordinarse con Fabián para pulir detalles de flujo y presentación.
+Dar de alta docentes desde el módulo del coordinador.
 
-Subir al repositorio los ajustes de diseño del módulo docente.
+Dar de alta materias desde el módulo del coordinador.
+Estas pantallas ya no deben aparecer en el menú ni ser accesibles por navegación.
+
+Implementar en el menú lateral la opción “Alumnos de la carrera” dentro del módulo de coordinación.
+
+Diseñar la vista “Alumnos de la carrera” con un bloque de filtros y búsqueda:
+
+Campo de texto: “Nombre o número de control”.
+
+Filtro por periodo.
+
+Filtro por carrera.
+
+Botón principal: “Consultar alumnos”.
+
+Implementar una tabla de resultados con columnas:
+
+Número de control (matrícula).
+
+Nombre del alumno.
+
+Carrera.
+
+Periodo.
+
+Estatus (Vigente, Egresado, Baja, etc.).
+
+Conectarse al backend para obtener la lista de alumnos vigentes/aceptados (solo lectura).
+
+Agregar un botón secundario “Imprimir” o “Exportar” para que la coordinadora pueda generar listas.
+
+Subir al repositorio los cambios de esta vista y la eliminación/deshabilitación de las antiguas pantallas de alta.
 
 Reporte Día 4:
 
-Pantallas docentes refinadas visualmente.
+Vistas de alta de alumnos, docentes y materias eliminadas o deshabilitadas.
 
-Problemas de usabilidad atendidos.
+Opción “Alumnos de la carrera” agregada al menú.
 
-Cambios subidos.
+Pantalla con buscador, filtros y tabla de alumnos implementada.
 
-Día 5 – Refinamiento del panel alumno
+Conexión con backend funcionando.
+
+Cambios subidos al repositorio.
+
+Día 5 – Vista “Trayectorias y grupos” y acceso a asignación
 Objetivo:
-Hacer que el panel del alumno sea claro y legible.
+Permitir que la coordinadora consulte la trayectoria/grupos de un alumno y acceda al flujo de asignación de alumnos a grupos.
 
 Actividades:
 
-Ajustar el diseño del horario para que sea entendible (por ejemplo, tabla por día/hora).
+Añadir en el menú lateral la opción “Trayectorias y grupos”.
 
-Mejorar la presentación de materias y calificaciones (jerarquía visual, colores, tipografía).
+Diseñar la vista con un bloque de consulta:
 
-Coordinarse con Fabián para mantener coherencia visual.
+Campo “Nombre o número de control del alumno”.
 
-Subir los ajustes del panel alumno al repositorio.
+Filtro de periodo.
+
+Botón “Consultar trayectoria”.
+
+Mostrar como resultado:
+
+Resumen de materias/grupos del alumno en el periodo seleccionado.
+
+Lista de grupos actuales en los que está inscrito.
+
+En cada grupo, incluir un botón/enlace “Administrar alumnos del grupo” que abra la pantalla de asignación de alumnos a grupos para ese grupo.
+
+Ajustar o crear la pantalla de asignación de alumnos:
+
+Encabezado con datos del grupo (nombre, materia, docente, periodo).
+
+Panel izquierdo: alumnos disponibles (aceptados) filtrados por carrera/periodo.
+
+Panel derecho: alumnos asignados al grupo, con opción para quitarlos.
+
+Contador de alumnos del grupo (ej. “23 / 30”).
+
+Integrar con backend las operaciones de:
+
+Alta de alumno–grupo.
+
+Baja de alumno–grupo.
+
+Subir al repositorio la vista “Trayectorias y grupos” y la integración con la pantalla de asignación.
 
 Reporte Día 5:
 
-Panel alumno refinado visualmente.
+Opción “Trayectorias y grupos” agregada al menú.
 
-Problemas de lectura/comprensión atendidos.
+Consulta de trayectoria/grupos por alumno implementada.
 
-Cambios subidos.
+Acceso desde esta vista a la asignación de alumnos por grupo funcionando.
 
-Día 6 – Correcciones generales de frontend
+Cambios subidos al repositorio.
+
+Día 6 – Correcciones generales en módulo de coordinación
 Objetivo:
-Pulir la interfaz en todos los módulos desde el punto de vista de admin/diseño.
+Pulir la experiencia visual y de uso en todas las pantallas del coordinador.
 
 Actividades:
 
-Recorrer las pantallas de alta, grupos y otros módulos para detectar:
+Revisar las pantallas:
 
-Inconsistencias visuales.
+Gestión de grupos.
 
-Mensajes mal colocados o poco claros.
+Alumnos de la carrera.
 
-Corregir estos problemas en conjunto con Fabián.
+Trayectorias y grupos.
 
-Coordinarse con Milton si algún problema visual se debe a formato de datos del backend.
+Asignación de alumnos a grupos.
 
-Subir al repositorio las correcciones aplicadas.
+Corregir:
+
+Inconsistencias visuales (tablas, botones, colores, tipografías).
+
+Mensajes de éxito/error poco claros.
+
+Problemas de flujo entre pantallas.
+
+Coordinarse con Fabián para unificar la línea gráfica respecto a módulos docente y alumno.
+
+Coordinarse con backend si algún problema proviene de formatos de datos.
+
+Subir al repositorio todas las correcciones aplicadas.
 
 Reporte Día 6:
 
-Pantallas revisadas y corregidas.
+Pantallas de coordinación revisadas y unificadas visualmente.
 
-Coordinación con backend registrada.
+Usabilidad mejorada en consultas y asignaciones.
 
-Cambios subidos.
+Cambios finales de interfaz subidos al repositorio.
 
-Día 7 – Evidencias visuales (junto con Fabián)
+Día 7 – Evidencias visuales del módulo de coordinación
 Objetivo:
-Documentar visualmente el sistema para la demo y el reporte.
+Documentar visualmente el módulo del coordinador para demo y reporte final.
 
 Actividades:
 
-Tomar capturas de pantalla de las pantallas de admin/coordinador y apoyo en otras vistas.
+Tomar capturas de:
 
-Redactar descripciones breves de lo que hace cada pantalla.
+Menú de coordinación.
 
-Coordinarse con Enrique para decidir cuáles se usarán en la demo.
+Vista “Alumnos de la carrera”.
 
-Subir capturas y descripciones al repositorio.
+Vista “Gestión de grupos”.
+
+Vista “Trayectorias y grupos”.
+
+Vista de “Asignación de alumnos al grupo”.
+
+Redactar descripciones breves de cada pantalla indicando:
+
+Rol (coordinador).
+
+Información que se muestra.
+
+Acciones que puede realizar.
+
+Acordar contigo qué capturas se usarán en la presentación.
+
+Subir capturas y descripciones al repositorio en la carpeta de documentación.
 
 Reporte Día 7:
 
-Capturas de pantallas de admin/coordinador generadas.
+Capturas de las pantallas clave generadas.
 
 Descripciones redactadas.
 
-Material subido al repositorio.
+Material subido al repositorio listo para la demo.
