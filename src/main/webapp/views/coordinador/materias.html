@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACADEX — Alta de Materias</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    
+    <link rel="stylesheet" href="../../css/acadex-styles.css">
+    <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Administración</p>
+                <a href="#" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">book</span>
+                    Materias
+                </a>
+                <a href="grupos.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">groups</span>
+                    Grupos / Horarios
+                </a>
+                <a href="../Alumnos/alta.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">person</span>
+                    Alumnos
+                </a>
+                <a href="../Docentes/alta.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">school</span>
+                    Docentes
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h1 class="topbar-title">Gestión de Materias <span class="topbar-sub">/ Nueva Asignatura</span></h1>
+                <div class="topbar-actions">
+                    <div class="avatar">AJ</div>
+                </div>
+            </header>
+
+            <section class="content content-centered bg-acadex">
+                <div class="form-card">
+                    <div class="brand-header">
+                        <div class="brand-logo-circle brand-logo-transparent">
+                            <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo" class="brand-logo-img">
+                        </div>
+                        <span class="brand-name-text">Acadex</span>
+                    </div>
+
+                    <header class="form-title-group">
+                        <h1 class="form-title">Registro de Materia</h1>
+                        <p class="form-subtitle">Ingresa los datos para registrar una nueva asignatura en el sistema académico.</p>
+                    </header>
+
+                    <form id="formMateria" class="form-grid">
+                        
+                        <div class="input-group" id="wrap-clave">
+                            <label class="input-label">Clave oficial <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">key</span>
+                                <input type="text" id="campo-clave" placeholder="Ej. ACF-123" required>
+                            </div>
+                            <small id="error-clave" class="form-error-msg"></small>
+                            <small id="hint-clave" class="form-hint-msg">Formato: Letras y números (Ej. ACF-123)</small>
+                        </div>
+
+                        <div class="input-group" id="wrap-nombre">
+                            <label class="input-label">Nombre de la Asignatura <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">auto_stories</span>
+                                <input type="text" id="campo-nombre" placeholder="Ej. Cálculo Diferencial" required>
+                            </div>
+                            <div class="form-msg-row">
+                                <small id="error-nombre" class="form-error-msg"></small>
+                                <small id="counter-nombre" class="form-counter">0 / 100</small>
+                            </div>
+                        </div>
+
+                        <div class="input-group" id="wrap-creditos">
+                            <label class="input-label">Créditos <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">star</span>
+                                <input type="number" id="campo-creditos" placeholder="Ej. 5" min="1" required>
+                            </div>
+                            <small id="error-creditos" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-semestre">
+                            <label class="input-label">Semestre sugerido <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">calendar_month</span>
+                                <select id="campo-semestre" required>
+                                    <option value="" disabled selected>Selecciona semestre...</option>
+                                    <option value="1">Primer Semestre</option>
+                                    <option value="2">Segundo Semestre</option>
+                                    <option value="3">Tercer Semestre</option>
+                                    <option value="4">Cuarto Semestre</option>
+                                    <option value="5">Quinto Semestre</option>
+                                    <option value="6">Sexto Semestre</option>
+                                    <option value="7">Séptimo Semestre</option>
+                                    <option value="8">Octavo Semestre</option>
+                                    <option value="9">Noveno Semestre</option>
+                                </select>
+                            </div>
+                            <small id="error-semestre" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="form-actions form-actions-full">
+                            <button type="button" id="btnLimpiar" class="btn-acadex-secondary">Limpiar</button>
+                            <button type="button" id="btnGuardar" class="btn-acadex-primary">
+                                <span id="btnText">Confirmar Alta</span>
+                                <span id="btnSpinner" class="btn-spinner-icon"></span>
+                                <span id="btnIcon" class="material-symbols-rounded">check_circle</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <pre id="jsonPreview" class="hidden-preview"></pre>
+
+    <div id="toast" class="toast-container">
+        <span id="toastIcon" class="material-symbols-rounded"></span>
+        <span id="toastMsg" class="toast-msg-text"></span>
+    </div>
+
+    <script src="../../js/materias.js"></script>
+    
+</body>
+</html>

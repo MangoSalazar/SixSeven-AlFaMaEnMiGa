@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACADEX — Gestión de Grupos y Horarios</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    
+    <link rel="stylesheet" href="../../css/acadex-styles.css">
+    <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Administración</p>
+                <a href="materias.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">book</span>
+                    Materias
+                </a>
+                <a href="#" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">groups</span>
+                    Grupos / Horarios
+                </a>
+                <a href="../Alumnos/alta.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">person</span>
+                    Alumnos
+                </a>
+                <a href="../Docentes/alta.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">school</span>
+                    Docentes
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h1 class="topbar-title">Gestión de Grupos <span class="topbar-sub">/ Nueva Asignación</span></h1>
+                <div class="topbar-actions">
+                    <div class="avatar">AJ</div>
+                </div>
+            </header>
+
+            <section class="content content-centered bg-acadex">
+                <div class="form-card">
+                    <div class="brand-header">
+                        <div class="brand-logo-circle brand-logo-transparent">
+                            <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo" class="brand-logo-img">
+                        </div>
+                        <span class="brand-name-text">Acadex</span>
+                    </div>
+
+                    <header class="form-title-group">
+                        <h1 class="form-title">Asignación de Grupo</h1>
+                        <p class="form-subtitle">Configura el horario vinculando materia, docente y aula para el periodo actual.</p>
+                    </header>
+
+                    <form id="formGrupo" class="form-grid">
+                        
+                        <div class="input-group" id="wrap-materia">
+                            <label class="input-label">Materia <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">auto_stories</span>
+                                <select id="campo-materia" required>
+                                    <option value="" disabled selected>Cargando materias...</option>
+                                </select>
+                            </div>
+                            <small id="error-materia" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-docente">
+                            <label class="input-label">Docente <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">school</span>
+                                <select id="campo-docente" required>
+                                    <option value="" disabled selected>Cargando docentes...</option>
+                                </select>
+                            </div>
+                            <small id="error-docente" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-aula">
+                            <label class="input-label">Aula <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">meeting_room</span>
+                                <select id="campo-aula" required>
+                                    <option value="" disabled selected>Cargando...</option>
+                                </select>
+                            </div>
+                            <small id="error-aula" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-periodo">
+                            <label class="input-label">Periodo <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">calendar_month</span>
+                                <select id="campo-periodo" required>
+                                    <option value="" disabled selected>Cargando...</option>
+                                </select>
+                            </div>
+                            <small id="error-periodo" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-dia">
+                            <label class="input-label">Día de la semana <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">calendar_today</span>
+                                <select id="campo-dia" required>
+                                    <option value="" disabled selected>Selecciona Día</option>
+                                    <option value="Lunes">Lunes</option>
+                                    <option value="Martes">Martes</option>
+                                    <option value="Miércoles">Miércoles</option>
+                                    <option value="Jueves">Jueves</option>
+                                    <option value="Viernes">Viernes</option>
+                                </select>
+                            </div>
+                            <small id="error-dia" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-inicio">
+                            <label class="input-label">Hora de Inicio <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">schedule</span>
+                                <input type="time" id="campo-inicio" min="07:00" max="21:00" required>
+                            </div>
+                            <small id="error-inicio" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="input-group" id="wrap-fin">
+                            <label class="input-label">Hora de Fin <span class="form-required">*</span></label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">more_time</span>
+                                <input type="time" id="campo-fin" min="07:00" max="21:00" required>
+                            </div>
+                            <small id="error-fin" class="form-error-msg"></small>
+                        </div>
+
+                        <div class="form-actions form-actions-full">
+                            <button type="button" id="btnLimpiar" class="btn-acadex-secondary">Limpiar</button>
+                            <button type="button" id="btnGuardar" class="btn-acadex-primary">
+                                <span id="btnText">Crear Grupo</span>
+                                <span id="btnSpinner" class="btn-spinner-icon"></span>
+                                <span id="btnIcon" class="material-symbols-rounded">check_circle</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast-container">
+        <span id="toastIcon" class="material-symbols-rounded"></span>
+        <span id="toastMsg" class="toast-msg-text"></span>
+    </div>
+
+    <script src="../../js/grupos.js"></script>
+</body>
+</html>
