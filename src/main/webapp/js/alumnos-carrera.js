@@ -11,7 +11,6 @@ const ALUMNOS_MOCK = [
     { matricula: '20210701', nombre: 'Jorge Omar Valdez', carrera: 'II', carreraLabel: 'Ing. Industrial', periodo: 'Ene-Jun 2026', estatus: 'Vigente' },
     { matricula: '20190412', nombre: 'Laura Martínez Ibarra', carrera: 'II', carreraLabel: 'Ing. Industrial', periodo: 'Ago-Dic 2025', estatus: 'Baja' }
 ];
-
 let resultadosActivos = [];
 let toastTimer = null;
 
@@ -51,7 +50,6 @@ function mostrarToast(tipo, msg) {
     toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
 }
 
-// ── Ocultar resultados ──
 function ocultarResultados() {
     document.getElementById('estadoVacio').style.display = 'flex';
     document.getElementById('contenedorTabla').style.display = 'none';
@@ -71,12 +69,32 @@ async function buscarAlumnos() {
     const spinner   = document.getElementById('spinnerBuscar');
     const icono     = document.getElementById('iconoBuscar');
     const texto     = document.getElementById('textoBuscar');
+    
     btn.disabled = true;
     spinner.style.display = 'block';
     icono.style.display   = 'none';
     texto.textContent     = 'Buscando...';
 
     try {
+        // ── INTENTO 1: Consumir el endpoint del backend ──
+        const params = new URLSearchParams();
+        if (busqueda) params.append('q', busqueda);
+        if (periodo)  params.append('periodo', periodo);
+        if (carrera)  params.append('carrera', carrera);
+        if (estatus)  params.append('estatus', estatus);
+
+        try {
+            const res = await fetch(`${API_URL}?${params.toString()}`);
+            if (res.ok) {
+                const datos = await res.json();
+                renderizarResultados(datos);
+                return; 
+            }
+        } catch (backendErr) {
+            console.warn("Backend no disponible aún. Cambiando a datos Mock locales...");
+        }
+
+        // ── INTENTO 2: Fallback al Mock si el backend falla ──
         await new Promise(r => setTimeout(r, 700)); 
         const datos = ALUMNOS_MOCK.filter(a => {
             const coincideBusqueda = !busqueda ||
@@ -91,7 +109,7 @@ async function buscarAlumnos() {
         renderizarResultados(datos);
 
     } catch (err) {
-        mostrarToast('error', 'No se pudo conectar con el servidor.');
+        mostrarToast('error', 'Ocurrió un error inesperado al buscar.');
         console.error('[ACADEX alumnos-carrera]', err);
     } finally {
         btn.disabled = false;
