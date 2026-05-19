@@ -9,7 +9,7 @@ togglePw.addEventListener('click', () => {
   eyeIcon.textContent = isHidden ? 'visibility_off' : 'visibility';
 });
 
-// Submit con animación y control de accesos 
+// Submit con animación y ruteo de tres vías (Administración, Docente y Alumno)
 function handleLogin() {
   const user = document.getElementById('usuario').value.trim();
   const pass = document.getElementById('password').value;
@@ -27,7 +27,7 @@ function handleLogin() {
     return;
   }
 
-  // Simular carga e interactividad
+  // Activar estado de carga institucional
   btn.disabled = true;
   spinner.style.display = 'block';
   icon.style.display = 'none';
@@ -37,19 +37,24 @@ function handleLogin() {
     const userUpper = user.toUpperCase();
     let destino = null;
 
-    // 1. EVALUACIÓN DE ROLES 
-    // Si inicia con DOC, apunta al perfil de la tabla DOCENTE
+    // 1. CONTROL DE ROLES 
+    
+    // ROL DOCENTE: Si inicia con DOC
     if (userUpper.startsWith('DOC')) {
       destino = 'views/Docentes/mis-grupos.html';
     } 
-    // Si es ADMIN o COORD, apunta a las credenciales de la tabla COORDINADOR
+    // ROL COORDINADOR: Si es ADMIN o COORD
     else if (userUpper === 'ADMIN' || userUpper === 'COORD') {
       destino = 'views/coordinador/materias.html';
     }
+    // ROL ALUMNO: Si ingresa puros números (número_control) o la palabra ALUMNO
+    else if (/^\d+$/.test(user) || userUpper === 'ALUMNO') {
+      destino = 'views/Alumnos/dashboard.html';
+    }
 
-    // 2. CONTROL DE FLUJO DE LA INTERFAZ
+    // 2. DESPLIEGUE DE INTERFAZ CONDICIONAL
     if (!destino) {
-      // Si las credenciales no pertenecen a ningún rol, restaurar botón y mostrar error
+      // Credenciales inválidas: restaurar componentes y detonar alerta
       spinner.style.display = 'none';
       icon.style.display = '';
       text.textContent = 'Entrar al sistema';
@@ -58,13 +63,14 @@ function handleLogin() {
       document.getElementById('alertMsg').textContent = 'Usuario o contraseña incorrectos. Verifica tus datos.';
       alert.classList.add('show');
     } else {
+      // Credenciales válidas
       spinner.style.display = 'none';
       icon.style.display = '';
       icon.textContent = 'check_circle';
       btn.style.background = 'var(--mint)';
       text.textContent = '¡Bienvenido!';
 
-      // Retraso de 600ms parea el mensaje de bienvenido
+      // Pausa estética de 600ms antes de la redirección física
       setTimeout(() => {
         window.location.href = destino;
       }, 600);
@@ -72,7 +78,7 @@ function handleLogin() {
   }, 1400);
 }
 
-// Enter para enviar
+// Enter para enviar formulario
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter') handleLogin();
 });
