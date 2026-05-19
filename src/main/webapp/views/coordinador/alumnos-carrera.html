@@ -37,10 +37,6 @@
                     <span class="material-symbols-rounded nav-icon">school</span>
                     Alumnos de la carrera
                 </a>
-                <a href="../Docentes/alta.html" class="nav-item">
-                    <span class="material-symbols-rounded nav-icon">person_4</span>
-                    Docentes
-                </a>
             </nav>
         </aside>
 
@@ -119,7 +115,7 @@
 
                     <div class="filtros-acciones">
                         <button type="button" id="btnLimpiarFiltros" class="btn-acadex-secondary">Limpiar filtros</button>
-                        <button type="button" id="btnBuscar" class="btn-acadex-primary" onclick="buscarAlumnos()">
+                        <button type="button" id="btnBuscar" class="btn-acadex-primary">
                             <span class="spinner-busqueda" id="spinnerBuscar"></span>
                             <span class="material-symbols-rounded" id="iconoBuscar">manage_search</span>
                             <span id="textoBuscar">Buscar alumnos</span>
@@ -132,7 +128,7 @@
                         <h2>Resultados</h2>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span class="contador" id="contadorResultados">—</span>
-                            <button class="btn-exportar" id="btnExportar" onclick="exportarLista()" style="display:none;">
+                            <button class="btn-exportar" id="btnExportar" style="display:none;">
                                 <span class="material-symbols-rounded">print</span>
                                 Exportar / Imprimir
                             </button>
