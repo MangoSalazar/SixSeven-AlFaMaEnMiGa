@@ -52,71 +52,127 @@
                 </div>
             </header>
 
-            <section class="content content-centered bg-acadex">
-                <div class="form-card" style="max-width: 950px;">
-                    <div class="brand-header">
+            <section class="content bg-acadex" style="padding: 24px;">
+
+                <div class="filtros-card">
+                    <div class="brand-header" style="margin-bottom: 12px;">
                         <div class="brand-logo-circle brand-logo-transparent">
                             <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo" class="brand-logo-img">
                         </div>
                         <span class="brand-name-text">Acadex</span>
                     </div>
 
-                    <header class="form-title-group">
-                        <h1 class="form-title">Consulta de Alumnos</h1>
-                        <p class="form-subtitle">Filtra y visualiza el padrón de estudiantes inscritos.</p>
-                    </header>
+                    <h1 class="form-title">Consulta de Alumnos</h1>
+                    <p class="form-subtitle">Filtra el padrón de estudiantes inscritos y genera reportes de la carrera.</p>
 
-                    <form id="formFiltrosAlumnos" class="form-grid">
-                        
-                        <div class="input-group" id="wrap-busqueda">
-                            <label class="input-label" for="campo-busqueda">Nombre o número de control</label>
+                    <div class="filtros-grid">
+                        <div class="input-group span-full">
+                            <label class="input-label">Nombre o Número de Control</label>
                             <div class="input-wrapper">
                                 <span class="material-symbols-rounded icon-accent">search</span>
-                                <input type="text" id="campo-busqueda" placeholder="Ej. 12345678 o Juan Pérez">
+                                <input type="text" id="campo-busqueda" placeholder="Ej. Juan García o 20210634" autocomplete="off">
                             </div>
                         </div>
 
-                        <div class="input-group" id="wrap-periodo">
-                            <label class="input-label" for="campo-periodo">Periodo</label>
+                        <div class="input-group">
+                            <label class="input-label">Periodo</label>
                             <div class="input-wrapper">
                                 <span class="material-symbols-rounded icon-accent">calendar_month</span>
-                                <select id="campo-periodo">
-                                    <option value="todos" selected>Todos los periodos</option>
-                                    <option value="ago-dic-2026">Ago - Dic 2026</option>
-                                    <option value="ene-jun-2026">Ene - Jun 2026</option>
+                                <select id="filtro-periodo">
+                                    <option value="">Todos los periodos</option>
+                                    <option value="Ago-Dic 2026">Ago–Dic 2026</option>
+                                    <option value="Ene-Jun 2026">Ene–Jun 2026</option>
+                                    <option value="Ago-Dic 2025">Ago–Dic 2025</option>
+                                    <option value="Ene-Jun 2025">Ene–Jun 2025</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="input-group" id="wrap-carrera">
-                            <label class="input-label" for="campo-carrera">Carrera</label>
+                        <div class="input-group">
+                            <label class="input-label">Carrera</label>
                             <div class="input-wrapper">
-                                <span class="material-symbols-rounded icon-accent">workspace_premium</span>
-                                <select id="campo-carrera">
-                                    <option value="todas" selected>Todas las carreras</option>
-                                    <option value="sistemas">Ingeniería en Sistemas Computacionales</option>
-                                    <option value="informatica">Ingeniería Informática</option>
-                                    <option value="gestion">Ingeniería en Gestión Empresarial</option>
-                                    <option value="industrial">Ingeniería Industrial</option>
+                                <span class="material-symbols-rounded icon-accent">engineering</span>
+                                <select id="filtro-carrera">
+                                    <option value="">Todas las carreras</option>
+                                    <option value="ISC">Ing. en Sistemas Computacionales</option>
+                                    <option value="II">Ing. Industrial</option>
+                                    <option value="IM">Ing. Mecatrónica</option>
+                                    <option value="ITICS">Ing. en TIC's</option>
+                                    <option value="IQ">Ing. Química</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-actions form-actions-full" style="justify-content: flex-end; padding-top: 10px;">
-                            <button type="button" id="btnBuscarAlumnos" class="btn-acadex-primary">
-                                <span id="btnTextBuscar">Consultar alumnos</span>
-                                <span class="material-symbols-rounded">manage_search</span>
-                            </button>
+                        <div class="input-group">
+                            <label class="input-label">Estatus</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">verified</span>
+                                <select id="filtro-estatus">
+                                    <option value="">Todos los estatus</option>
+                                    <option value="Vigente">Vigente</option>
+                                    <option value="Egresado">Egresado</option>
+                                    <option value="Baja">Baja</option>
+                                </select>
+                            </div>
                         </div>
-                    </form>
-                    <div id="resultados-alumnos" style="margin-top: 2rem;">
-                        
                     </div>
 
+                    <div class="filtros-acciones">
+                        <button type="button" id="btnLimpiarFiltros" class="btn-acadex-secondary">Limpiar filtros</button>
+                        <button type="button" id="btnBuscar" class="btn-acadex-primary" onclick="buscarAlumnos()">
+                            <span class="spinner-busqueda" id="spinnerBuscar"></span>
+                            <span class="material-symbols-rounded" id="iconoBuscar">manage_search</span>
+                            <span id="textoBuscar">Buscar alumnos</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="resultados-card" id="zonaResultados">
+                    <div class="resultados-header">
+                        <h2>Resultados</h2>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="contador" id="contadorResultados">—</span>
+                            <button class="btn-exportar" id="btnExportar" onclick="exportarLista()" style="display:none;">
+                                <span class="material-symbols-rounded">print</span>
+                                Exportar / Imprimir
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="estado-vacio" id="estadoVacio">
+                        <span class="material-symbols-rounded">group_search</span>
+                        <p>Usa los filtros y presiona <strong>"Buscar alumnos"</strong> para ver resultados.</p>
+                    </div>
+
+                    <div class="table-container" id="contenedorTabla" style="display: none;">
+                        <table class="acadex-table" id="tablaAlumnos">
+                            <thead>
+                                <tr>
+                                    <th>Núm. de Control</th>
+                                    <th>Nombre del Alumno</th>
+                                    <th>Carrera</th>
+                                    <th>Periodo</th>
+                                    <th style="text-align: center;">Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpoTabla"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="estado-vacio" id="estadoSinResultados" style="display: none;">
+                        <span class="material-symbols-rounded">search_off</span>
+                        <p>No se encontraron alumnos con los filtros seleccionados.</p>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
 
+    <div id="toast" class="toast-container">
+        <span id="toastIcon" class="material-symbols-rounded"></span>
+        <span id="toastMsg" class="toast-msg-text"></span>
+    </div>
+
+    <script src="../../js/alumnos-carrera.js"></script>
 </body>
 </html>
