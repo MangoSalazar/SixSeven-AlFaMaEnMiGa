@@ -833,6 +833,132 @@ p { color: var(--text-secondary); line-height: 1.6; }
   .toast-notif { left: 16px; right: 16px; min-width: unset; }
   .card-form-materia { padding: 20px 16px; }
 }
+/* ==========================================================================
+   22. Perfil y Usuario (SIDEBAR & TOPBAR)
+   ========================================================================== */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.sidebar-section {
+    flex-grow: 1;
+}
+
+/* Apartado de usuario en el Sidebar*/
+.sidebar-user {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0,0,0,0.2);
+}
+
+.user-avatar-sm {
+    width: 40px;
+    height: 40px;
+    background: var(--acadex-blue-light, #0062FF);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.user-name {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.user-role {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+}
+
+.btn-gear {
+    margin-left: auto;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+.btn-gear:hover { color: white; }
+
+/* Avatar interactivo en Topbar*/
+.topbar-actions a.avatar-link {
+    text-decoration: none;
+}
+
+.topbar-actions .avatar {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.topbar-actions .avatar:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px rgba(0,98,255,0.1);
+}
+
+/* Estilos para la pagina de Perfil */
+.profile-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.profile-header .avatar-lg {
+    width: 100px;
+    height: 100px;
+    background: var(--prussian);
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.btn-logout {
+    margin-top: 30px;
+    background: #fdeaea;
+    color: #b03030;
+    border: 1px solid #f5b0b0;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background: #b03030;
+    color: white;
+}
 /* ============================================================
    Para incluir en HTML:
    <link rel="stylesheet" href="acadex-styles.css">

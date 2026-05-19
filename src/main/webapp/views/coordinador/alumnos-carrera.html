@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACADEX — Alumnos de la Carrera</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    
+    <link rel="stylesheet" href="../../css/acadex-styles.css">
+    <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Administración</p>
+                <a href="materias.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">book</span>
+                    Materias
+                </a>
+                <a href="grupos.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">groups</span>
+                    Grupos / Horarios
+                </a>
+                <a href="alumnos-carrera.html" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">school</span>
+                    Alumnos de la carrera
+                </a>
+            </nav>
+
+            <div class="sidebar-user">
+                <div class="user-avatar-sm">AJ</div>
+                <div class="user-info">
+                    <span class="user-name">Alfredo Jiménez</span>
+                    <span class="user-role">Coord. Académico</span>
+                </div>
+                <a href="../../perfil.html" class="btn-gear">
+                    <span class="material-symbols-rounded" style="font-size: 18px;">settings</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h1 class="topbar-title">Gestión de Alumnos <span class="topbar-sub">/ Alumnos de la Carrera</span></h1>
+                <div class="topbar-actions">
+                    <a href="../../perfil.html" class="avatar-link">
+                        <div class="avatar">AJ</div>
+                    </a>
+                </div>
+            </header>
+
+            <section class="content bg-acadex" style="padding: 24px;">
+
+                <div class="filtros-card">
+                    <div class="brand-header" style="margin-bottom: 12px;">
+                        <div class="brand-logo-circle brand-logo-transparent">
+                            <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo" class="brand-logo-img">
+                        </div>
+                        <span class="brand-name-text">Acadex</span>
+                    </div>
+
+                    <h1 class="form-title">Consulta de Alumnos</h1>
+                    <p class="form-subtitle">Filtra el padrón de estudiantes inscritos y genera reportes de la carrera.</p>
+
+                    <div class="filtros-grid">
+                        <div class="input-group span-full">
+                            <label class="input-label">Nombre o Número de Control</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">search</span>
+                                <input type="text" id="campo-busqueda" placeholder="Ej. Juan García o 20210634" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Periodo</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">calendar_month</span>
+                                <select id="filtro-periodo">
+                                    <option value="">Todos los periodos</option>
+                                    <option value="Ago-Dic 2026">Ago–Dic 2026</option>
+                                    <option value="Ene-Jun 2026">Ene–Jun 2026</option>
+                                    <option value="Ago-Dic 2025">Ago–Dic 2025</option>
+                                    <option value="Ene-Jun 2025">Ene–Jun 2025</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Carrera</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">engineering</span>
+                                <select id="filtro-carrera">
+                                    <option value="">Todas las carreras</option>
+                                    <option value="ISC">Ing. en Sistemas Computacionales</option>
+                                    <option value="II">Ing. Industrial</option>
+                                    <option value="IM">Ing. Mecatrónica</option>
+                                    <option value="ITICS">Ing. en TIC's</option>
+                                    <option value="IQ">Ing. Química</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Estatus</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">verified</span>
+                                <select id="filtro-estatus">
+                                    <option value="">Todos los estatus</option>
+                                    <option value="Vigente">Vigente</option>
+                                    <option value="Egresado">Egresado</option>
+                                    <option value="Baja">Baja</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filtros-acciones">
+                        <button type="button" id="btnLimpiarFiltros" class="btn-acadex-secondary">Limpiar filtros</button>
+                        <button type="button" id="btnBuscar" class="btn-acadex-primary">
+                            <span class="spinner-busqueda" id="spinnerBuscar"></span>
+                            <span class="material-symbols-rounded" id="iconoBuscar">manage_search</span>
+                            <span id="textoBuscar">Buscar alumnos</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="resultados-card" id="zonaResultados">
+                    <div class="resultados-header">
+                        <h2>Resultados</h2>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="contador" id="contadorResultados">—</span>
+                            <button class="btn-exportar" id="btnExportar" style="display:none;">
+                                <span class="material-symbols-rounded">print</span>
+                                Exportar / Imprimir
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="estado-vacio" id="estadoVacio">
+                        <span class="material-symbols-rounded">group_search</span>
+                        <p>Usa los filtros y presiona <strong>"Buscar alumnos"</strong> para ver resultados.</p>
+                    </div>
+
+                    <div class="table-container" id="contenedorTabla" style="display: none;">
+                        <table class="acadex-table" id="tablaAlumnos">
+                            <thead>
+                                <tr>
+                                    <th>Núm. de Control</th>
+                                    <th>Nombre del Alumno</th>
+                                    <th>Carrera</th>
+                                    <th>Periodo</th>
+                                    <th style="text-align: center;">Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpoTabla"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="estado-vacio" id="estadoSinResultados" style="display: none;">
+                        <span class="material-symbols-rounded">search_off</span>
+                        <p>No se encontraron alumnos con los filtros seleccionados.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast-container">
+        <span id="toastIcon" class="material-symbols-rounded"></span>
+        <span id="toastMsg" class="toast-msg-text"></span>
+    </div>
+
+    <script src="../../js/alumnos-carrera.js"></script>
+</body>
+</html>

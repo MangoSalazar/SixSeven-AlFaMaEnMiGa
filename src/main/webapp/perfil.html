@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil — ACADEX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    
+    <link rel="stylesheet" href="css/acadex-styles.css">
+    <link rel="stylesheet" href="css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <main class="main" style="margin-left: 0; width: 100%;">
+            <header class="topbar">
+                <button onclick="history.back()" class="btn-acadex-secondary" style="padding: 5px 15px; display: inline-flex; align-items: center; gap: 5px;">
+                    <span class="material-symbols-rounded">arrow_back</span> Volver
+                </button>
+                <h1 class="topbar-title">Configuración <span class="topbar-sub">/ Mi Perfil</span></h1>
+            </header>
+
+            <section class="content content-centered bg-acadex">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="avatar-lg">AJ</div>
+                        <h2 style="font-size: 1.8rem; color: var(--prussian); margin-bottom: 5px;">Alfredo Jiménez</h2>
+                        <p style="color: var(--text-muted); font-weight: 500;">Coordinador Académico</p>
+                    </div>
+
+                    <div style="text-align: left; margin-top: 30px; border-top: 1px solid var(--border-light); padding-top: 20px;">
+                        <div class="input-group" style="margin-bottom: 15px;">
+                            <label class="input-label" style="color: var(--text-muted); font-size: 0.85rem;">Número de Control / Nómina</label>
+                            <p style="font-weight: 600; font-size: 1.1rem; color: var(--prussian);">20210635</p>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" style="color: var(--text-muted); font-size: 0.85rem;">Correo Institucional</label>
+                            <p style="font-weight: 600; font-size: 1.1rem; color: var(--prussian);">alfredo.jimenez@mochis.tecnm.mx</p>
+                        </div>
+                    </div>
+
+                    <a href="index.html" class="btn-logout" style="text-decoration: none;">
+                        <span class="material-symbols-rounded">logout</span>
+                        Cerrar Sesión
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

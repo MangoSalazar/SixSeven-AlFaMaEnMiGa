@@ -385,3 +385,307 @@
   background-color: rgba(239, 68, 68, 0.12);
   color: var(--strawberry); /* Strawberry Red para Reprobados */
 }
+/* ==========================================================================
+   ESTILOS ALUMNOS DE LA CARRERA (CONSULTA)
+   ========================================================================== */
+
+/* Zona de filtros */
+.filtros-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px 20px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+}
+.filtros-card .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+.filtros-card .form-subtitle {
+    margin-bottom: 24px;
+}
+
+/* Grid de filtros*/
+.filtros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    align-items: end;
+}
+.filtros-grid .span-full {
+    grid-column: 1 / -1;
+}
+.filtros-acciones {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light);
+}
+
+/* Zona de resultados */
+.resultados-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
+}
+.resultados-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.resultados-header h2 {
+    font-size: 1.1rem;
+    color: var(--prussian);
+    font-weight: 600;
+}
+.resultados-header .contador {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--snow);
+    border: 1px solid var(--border-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Estado vacio y Sin resultados */
+.estado-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    color: var(--text-muted);
+    gap: 12px;
+    text-align: center;
+}
+.estado-vacio .material-symbols-rounded {
+    font-size: 48px;
+    color: var(--border);
+}
+.estado-vacio p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Badges de estatus en la tabla */
+.estatus-vigente  { background: #e6faf3; color: #0a7a52; }
+.estatus-egresado { background: #e4f4ff; color: #004aa0; }
+.estatus-baja     { background: #fdeaea; color: #b03030; }
+.estatus-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* Botón exportar con icono */
+.btn-exportar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--prussian);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s ease;
+}
+.btn-exportar:hover { background: var(--prussian-light); }
+.btn-exportar .material-symbols-rounded { font-size: 17px; }
+
+/* Spinner de busqueda */
+.spinner-busqueda {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filtros-acciones { flex-direction: column; }
+    .btn-acadex-primary, .btn-acadex-secondary, .btn-exportar { width: 100%; justify-content: center; }
+}
+/* ==========================================================================
+   ESTILOS VISTA DE LA TABLA PDF
+   ========================================================================== */
+
+/* Zona de filtros */
+.filtros-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px 20px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+}
+.filtros-card .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+.filtros-card .form-subtitle {
+    margin-bottom: 24px;
+}
+
+/* Grid de filtros */
+.filtros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    align-items: end;
+}
+.filtros-grid .span-full {
+    grid-column: 1 / -1;
+}
+.filtros-acciones {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light);
+}
+
+/* Zona de resultados */
+.resultados-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    box-shadow: var(--shadow-sm);
+}
+.resultados-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+.resultados-header h2 {
+    font-size: 1.1rem;
+    color: var(--prussian);
+    font-weight: 600;
+}
+.resultados-header .contador {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--snow);
+    border: 1px solid var(--border-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Estado vacío y Sin resultados */
+.estado-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    color: var(--text-muted);
+    gap: 12px;
+}
+.estado-vacio .material-symbols-rounded {
+    font-size: 48px;
+    color: var(--border);
+}
+.estado-vacio p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Badges de estatus */
+.estatus-vigente  { background: #e6faf3; color: #0a7a52; }
+.estatus-egresado { background: #e4f4ff; color: #004aa0; }
+.estatus-baja     { background: #fdeaea; color: #b03030; }
+.estatus-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* Botones y Animaciones */
+.btn-exportar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--prussian);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s ease;
+}
+.btn-exportar:hover { background: var(--prussian-light); }
+.btn-exportar .material-symbols-rounded { font-size: 17px; }
+
+.spinner-busqueda {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Toast */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 13px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(10px);
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    pointer-events: none;
+}
+.toast-container.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.toast-msg-text { font-weight: 500; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; }
+
+/* Responsive filtros */
+@media (max-width: 768px) {
+    .filtros-grid { grid-template-columns: 1fr; }
+    .filtros-grid .span-full { grid-column: 1; }
+    .filtros-acciones { flex-direction: column; }
+    .resultados-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
