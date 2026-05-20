@@ -1,5 +1,7 @@
+-- ==========================================================
 -- SISTEMA ACADEX - SCRIPT MAESTRO INTEGRADO
--- ACTUALIZACIÓN: DÍA 4 (CALIFICACIONES Y EVALUACIÓN DOCENTE)
+-- ACTUALIZACIÓN FINAL: DÍA 5 (VISTAS DE HORARIO Y KARDEX)
+-- ==========================================================
 
 -- ----------------------------------------------------------
 -- 1. CONFIGURACIÓN INICIAL
@@ -9,7 +11,8 @@ DATABASE IF NOT EXISTS acadex_db;
 USE
 acadex_db;
 SET
-FOREIGN_KEY_CHECKS = 0;
+FOREIGN_KEY_CHECKS = 0; -- Desactiva revisiones para permitir DROP e inserts masivos
+
 -- ----------------------------------------------------------
 -- 2. MÓDULO DE CATÁLOGOS BASE
 -- ----------------------------------------------------------
@@ -78,7 +81,7 @@ DROP TABLE IF EXISTS ROL;
 CREATE TABLE ROL
 (
     id_rol     INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_rol VARCHAR(20) NOT NULL UNIQUE -- 'ADMIN', 'ALUMNO', 'DOCENTE'
+    nombre_rol VARCHAR(20) NOT NULL UNIQUE
 );
 
 DROP TABLE IF EXISTS USUARIO;
@@ -93,7 +96,7 @@ CREATE TABLE USUARIO
 );
 
 -- ----------------------------------------------------------
--- 4. ESTRUCTURA ACADÉMICA (GRUPOS Y ASIGNACIONES)
+-- 4. ESTRUCTURA ACADÉMICA (CON SOPORTE DE HORARIOS - DÍA 5)
 -- ----------------------------------------------------------
 DROP TABLE IF EXISTS GRUPO;
 CREATE TABLE GRUPO
@@ -109,9 +112,13 @@ DROP TABLE IF EXISTS ASIGNACION_DOCENTE;
 CREATE TABLE ASIGNACION_DOCENTE
 (
     id_asignacion INT AUTO_INCREMENT PRIMARY KEY,
-    id_grupo      INT NOT NULL,
-    id_materia    INT NOT NULL,
-    id_docente    INT NOT NULL,
+    id_grupo      INT         NOT NULL,
+    id_materia    INT         NOT NULL,
+    id_docente    INT         NOT NULL,
+    dias          VARCHAR(50) NOT NULL, -- Ej: 'LUN-MIE-VIE'
+    hora_inicio   TIME        NOT NULL, -- Ej: '14:00:00'
+    hora_fin      TIME        NOT NULL, -- Ej: '15:00:00'
+    aula          VARCHAR(50) NOT NULL, -- Blindado a 50 caracteres para evitar Error 1406
     CONSTRAINT fk_asig_grupo FOREIGN KEY (id_grupo) REFERENCES GRUPO (id_grupo),
     CONSTRAINT fk_asig_materia FOREIGN KEY (id_materia) REFERENCES MATERIA (id_materia),
     CONSTRAINT fk_asig_docente FOREIGN KEY (id_docente) REFERENCES DOCENTE (id_docente)
@@ -128,10 +135,8 @@ CREATE TABLE GRUPO_ALUMNO
 );
 
 -- ----------------------------------------------------------
--- 5. MÓDULO DE CALIFICACIONES Y EVALUACIÓN (DÍA 4)
+-- 5. MÓDULO DE CALIFICACIONES Y EVALUACIÓN
 -- ----------------------------------------------------------
-
--- Calificaciones académicas (Docente -> Alumno)
 DROP TABLE IF EXISTS CALIFICACION;
 CREATE TABLE CALIFICACION
 (
@@ -148,7 +153,6 @@ CREATE TABLE CALIFICACION
     CONSTRAINT fk_calif_asig FOREIGN KEY (id_asignacion) REFERENCES ASIGNACION_DOCENTE (id_asignacion)
 );
 
--- Evaluación docente (Alumno -> Docente / CU-19)
 DROP TABLE IF EXISTS EVALUACION_DOCENTE;
 CREATE TABLE EVALUACION_DOCENTE
 (
@@ -173,7 +177,7 @@ CREATE TABLE CONTROL_EVALUACION
     id_control                 INT AUTO_INCREMENT PRIMARY KEY,
     fecha_apertura             DATETIME    NOT NULL,
     fecha_cierre               DATETIME    NOT NULL,
-    estado                     VARCHAR(20) NOT NULL, -- 'ABIERTO', 'CERRADO'
+    estado                     VARCHAR(20) NOT NULL,
     id_periodo                 INT         NOT NULL,
     id_coordinador_responsable INT,
     CONSTRAINT fk_control_periodo FOREIGN KEY (id_periodo) REFERENCES PERIODO (id_periodo) ON DELETE RESTRICT,
@@ -191,12 +195,57 @@ CREATE TABLE LOG_SISTEMA
 );
 
 -- ----------------------------------------------------------
--- 7. DISPARADORES (TRIGGERS) DE SEGURIDAD Y LÓGICA
+-- 7. VISTAS REQUERIDAS (NUEVAS DÍA 5)
+-- ----------------------------------------------------------
+DROP VIEW IF EXISTS vw_horario_alumno;
+CREATE VIEW vw_horario_alumno AS
+SELECT GA.id_alumno,
+       A.matricula,
+       A.nombre       AS nombre_alumno,
+       M.clave        AS clave_materia,
+       M.nombre       AS nombre_materia,
+       G.nombre_grupo AS grupo,
+       D.nombre       AS nombre_docente,
+       AD.dias,
+       AD.hora_inicio,
+       AD.hora_fin,
+       AD.aula,
+       P.nombre_ciclo AS periodo
+FROM GRUPO_ALUMNO GA
+         JOIN ALUMNO A ON GA.id_alumno = A.id_alumno
+         JOIN GRUPO G ON GA.id_grupo = G.id_grupo
+         JOIN PERIODO P ON G.id_periodo = P.id_periodo
+         JOIN ASIGNACION_DOCENTE AD ON G.id_grupo = AD.id_grupo
+         JOIN MATERIA M ON AD.id_materia = M.id_materia
+         JOIN DOCENTE D ON AD.id_docente = D.id_docente;
+
+DROP VIEW IF EXISTS vw_kardex_alumno;
+CREATE VIEW vw_kardex_alumno AS
+SELECT C.id_alumno,
+       A.matricula,
+       A.nombre       AS nombre_alumno,
+       M.clave        AS clave_materia,
+       M.nombre       AS nombre_materia,
+       M.creditos,
+       C.nota_final,
+       CASE
+           WHEN C.nota_final >= 70 THEN 'ACREDITADA'
+           ELSE 'NO ACREDITADA'
+           END        AS estatus_materia,
+       P.nombre_ciclo AS periodo
+FROM CALIFICACION C
+         JOIN ALUMNO A ON C.id_alumno = A.id_alumno
+         JOIN ASIGNACION_DOCENTE AD ON C.id_asignacion = AD.id_asignacion
+         JOIN MATERIA M ON AD.id_materia = M.id_materia
+         JOIN GRUPO G ON AD.id_grupo = G.id_grupo
+         JOIN PERIODO P ON G.id_periodo = P.id_periodo;
+
+-- ----------------------------------------------------------
+-- 8. DISPARADORES (TRIGGERS)
 -- ----------------------------------------------------------
 DELIMITER
 //
 
--- Validación de fechas de evaluación
 DROP TRIGGER IF EXISTS trg_validar_fechas_apertura //
 CREATE TRIGGER trg_validar_fechas_apertura
     BEFORE INSERT
@@ -209,7 +258,6 @@ END IF;
 END;
 //
 
--- Cálculo automático de nota final (Día 4)
 DROP TRIGGER IF EXISTS trg_calcular_nota_final //
 CREATE TRIGGER trg_calcular_nota_final
     BEFORE INSERT
@@ -220,7 +268,6 @@ BEGIN
 END;
 //
 
--- Auditoría de cambios de estado (CU-19)
 DROP TRIGGER IF EXISTS trg_log_cambio_estado_evaluacion //
 CREATE TRIGGER trg_log_cambio_estado_evaluacion
     AFTER UPDATE
@@ -234,7 +281,6 @@ END IF;
 END;
 //
 
--- Validaciones de inserción (Auditoría)
 DROP TRIGGER IF EXISTS trg_validar_alumno_insert //
 CREATE TRIGGER trg_validar_alumno_insert
     BEFORE INSERT
@@ -262,7 +308,7 @@ END;
 DELIMITER ;
 
 -- ----------------------------------------------------------
--- 8. POBLACIÓN INICIAL Y DATOS DE PRUEBA
+-- 9. POBLACIÓN INICIAL Y DATOS DE PRUEBA (DÍA 5)
 -- ----------------------------------------------------------
 INSERT
 IGNORE INTO ROL (nombre_rol) VALUES ('ADMIN'), ('ALUMNO'), ('DOCENTE');
@@ -271,15 +317,35 @@ IGNORE INTO PERIODO (nombre_ciclo) VALUES ('Ago-Dic 2026');
 INSERT
 IGNORE INTO COORDINADOR (nombre, usuario) VALUES ('Fausto Avila', 'favila.admin');
 
--- Datos de ejemplo Alumno, Docente, Materia
 INSERT
-IGNORE INTO ALUMNO (matricula, nombre, correo, telefono, username, carrera, semestre)
-VALUES ('21330001', 'Gael Eduardo Pacheco López', 'l21330001@losmochis.tecnm.mx', '6681234567', 'gael.pacheco', 'Ingeniería Informática', 6);
+IGNORE INTO ALUMNO (id_alumno, matricula, nombre, correo, telefono, username, carrera, semestre)
+VALUES (1, '21330001', 'Gael Eduardo Pacheco López', 'l21330001@losmochis.tecnm.mx', '6681234567', 'gael.pacheco', 'Ingeniería Informática', 6);
 
 INSERT
-IGNORE INTO DOCENTE (rfc, nombre, correo, telefono, username, departamento)
-VALUES ('HEPR800101XYZ', 'Ricardo Hernández', 'rhernandez@losmochis.tecnm.mx', '6689876543', 'ricardo.hndz', 'Sistemas y Computación');
+IGNORE INTO DOCENTE (id_docente, rfc, nombre, correo, telefono, username, departamento)
+VALUES (1, 'HEPR800101XYZ', 'Ricardo Hernández', 'rhernandez@losmochis.tecnm.mx', '6689876543', 'ricardo.hndz', 'Sistemas y Computación');
 
 INSERT
-IGNORE INTO MATERIA (nombre, clave, creditos, horas_teoricas, horas_practicas)
-VALUES ('Administración de Base de Datos', 'SCD-1011', 5, 2, 3);
+IGNORE INTO MATERIA (id_materia, nombre, clave, creditos, horas_teoricas, horas_practicas)
+VALUES (1, 'Administración de Base de Datos', 'SCD-1011', 5, 2, 3);
+
+INSERT
+IGNORE INTO GRUPO (id_grupo, nombre_grupo, capacidad, id_periodo)
+VALUES (1, '601', 35, 1);
+
+-- Vinculamos al alumno al grupo en las listas oficiales
+INSERT
+IGNORE INTO GRUPO_ALUMNO (id_grupo, id_alumno) VALUES (1, 1);
+
+-- Asignación docente corregida (Usa id_docente = 1 que pertenece a Ricardo)
+INSERT
+IGNORE INTO ASIGNACION_DOCENTE (id_asignacion, id_grupo, id_materia, id_docente, dias, hora_inicio, hora_fin, aula)
+VALUES (1, 1, 1, 1, 'LUN-MIE-VIE', '14:00:00', '15:00:00', 'Lab-Sistemas');
+
+-- Inserción en calificaciones para generar el Kardex automático
+INSERT
+IGNORE INTO CALIFICACION (id_alumno, id_asignacion, parcial_1, parcial_2, parcial_3, observaciones)
+VALUES (1, 1, 90, 85, 95, 'Excelente desempeño general');
+
+SET
+FOREIGN_KEY_CHECKS = 1; -- Reactiva la integridad referencial al finalizar
