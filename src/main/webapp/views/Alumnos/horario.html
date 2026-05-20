@@ -4,75 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ACADEX — Mi Horario</title>
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
-  
   <link rel="stylesheet" href="../../css/acadex-styles.css">
   <link rel="stylesheet" href="../../css/forms-acadex.css">
-  
-  <style>
-    .modal-overlay {
-        display: none; 
-        position: fixed; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        height: 100%; 
-        background: rgba(15, 23, 42, 0.3); 
-        backdrop-filter: blur(4px);
-        justify-content: center; 
-        align-items: center; 
-        z-index: 9999;
-    }
-    @keyframes modalFadeIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
-    }
-    .modal-card-animated {
-        animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-  </style>
 </head>
 <body>
     <div class="app">
         <aside class="sidebar">
             <div class="sidebar-logo">
-                <div class="logo-icon">
-                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
-                </div>
+                <div class="logo-icon"><img src="../../assets/AcadexLogo.png" alt="ACADEX Logo"></div>
                 <span class="logo-text">ACADEX</span>
             </div>
-            
             <nav class="sidebar-section">
                 <p class="sidebar-label">Portal Estudiantil</p>
-                <a href="dashboard.html" class="nav-item">
-                    <span class="material-symbols-rounded nav-icon">dashboard</span>
-                    Dashboard
-                </a>
-                <a href="horario.html" class="nav-item active">
-                    <span class="material-symbols-rounded nav-icon">calendar_month</span>
-                    Mi Horario
-                </a>
-                <a href="kardex.html" class="nav-item">
-                    <span class="material-symbols-rounded nav-icon">analytics</span>
-                    Mi Kardex
-                </a>
+                <a href="dashboard.html" class="nav-item"><span class="material-symbols-rounded nav-icon">dashboard</span>Dashboard</a>
+                <a href="horario.html" class="nav-item active"><span class="material-symbols-rounded nav-icon">calendar_month</span>Mi Horario</a>
+                <a href="kardex.html" class="nav-item"><span class="material-symbols-rounded nav-icon">analytics</span>Mi Kardex</a>
             </nav>
         </aside>
 
         <main class="main" style="overflow-y: auto;">
             <header class="topbar">
                 <h1 class="topbar-title">Información Escolar <span class="topbar-sub">/ Horario de Clases</span></h1>
-                
-                <div class="topbar-actions" style="cursor: pointer;" onclick="window.location.href='perfil-alumno.html'">
+                <div class="topbar-actions" style="cursor: pointer;" onclick="window.location.href='../../perfil.html'">
                     <div style="text-align: right; margin-right: 12px;">
-                        <p class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Fabián Montes</p>
-                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Control: 20210634</p>
+                        <p id="topbarName" class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Cargando...</p>
+                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Control: <span id="topbarControl">--------</span></p>
                     </div>
-                    <div class="avatar">FS</div>
+                    <div id="topbarAvatar" class="avatar">--</div>
                 </div>
             </header>
 
@@ -108,20 +70,16 @@
 
     <div id="modalDocente" class="modal-overlay" onclick="cerrarModalExterno(event)">
         <div class="form-card modal-card-animated" style="max-width: 420px; width: 100%; text-align: center; position: relative; padding: 32px; margin: 20px; box-shadow: var(--shadow-lg);">
-            
             <button type="button" style="position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: #94a3b8; display: flex;" onclick="cerrarModal()">
                 <span class="material-symbols-rounded" style="font-size: 1.4rem;">close</span>
             </button>
-
             <div style="margin-bottom: 16px; display: flex; justify-content: center;">
                 <div style="width: 72px; height: 72px; background-color: rgba(0, 98, 255, 0.08); color: var(--sapphire); border-radius: 50%; display: flex; justify-content: center; align-items: center;">
                     <span class="material-symbols-rounded" style="font-size: 2.2rem;">badge</span>
                 </div>
             </div>
-
             <h1 id="modalNombreDocente" class="form-title" style="font-size: 1.25rem; margin-bottom: 4px; color: var(--prussian);"></h1>
             <p id="modalPuestoDocente" style="font-weight: 600; color: var(--sapphire); margin-bottom: 24px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;"></p>
-
             <div style="text-align: left; background-color: #f8fafc; padding: 16px; border-radius: 10px; display: flex; flex-direction: column; gap: 12px;">
                 <div>
                     <span style="font-size: 0.75rem; font-weight: 600; color: #94a3b8; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Estatus Académico</span>
@@ -137,59 +95,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const payloadHorario = [
-                { clave: "AED-1283", materia: "Estructura de Datos", aula: "Aula L2", dias: "Lun - Vie", horas: "08:00 - 09:00", docente: "Ing. Maviles Torres", puesto: "Docente Titular", academia: "Sistemas y Computación" },
-                { clave: "TCH-1024", materia: "Programación Web", aula: "Laboratorio C", dias: "Lun - Vie", horas: "12:00 - 13:00", docente: "M.C. Alfredo Jiménez", puesto: "Docente Técnico", academia: "Sistemas y Computación" }
-            ];
-
-            renderizarHorario(payloadHorario);
-        });
-
-        function renderizarHorario(listaHorarios) {
-            const tbody = document.getElementById('tablaHorario');
-            tbody.innerHTML = "";
-
-            listaHorarios.forEach(item => {
-                const tr = document.createElement('tr');
-                
-              
-                tr.innerHTML = `
-                    <td class="font-bold text-prussian">${item.clave}</td>
-                    <td>${item.materia}</td>
-                    <td>${item.aula}</td>
-                    <td>${item.dias}</td>
-                    <td>${item.horas}</td>
-                    <td style="text-align: center; vertical-align: middle;">
-                        <button class="btn-table-action" style="display: inline-flex; align-items: center; justify-content: center; width: auto; min-width: unset; padding: 0; margin: 0 auto; background: none; border: none; cursor: pointer;" onclick="abrirModalDocente('${item.docente}', '${item.puesto}', '${item.academia}')">
-                            <span class="material-symbols-rounded" style="color: var(--sapphire); font-size: 1.35rem; display: block;">info</span>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function abrirModalDocente(nombre, puesto, academia) {
-            document.getElementById('modalNombreDocente').textContent = nombre;
-            document.getElementById('modalPuestoDocente').textContent = puesto;
-            document.getElementById('modalAcademiaDocente').textContent = academia;
-
-            const modal = document.getElementById('modalDocente');
-            modal.style.display = 'flex';
-        }
-
-        function cerrarModal() {
-            document.getElementById('modalDocente').style.display = 'none';
-        }
-
-        function cerrarModalExterno(event) {
-            const modal = document.getElementById('modalDocente');
-            if (event.target === modal) {
-                cerrarModal();
-            }
-        }
-    </script>
+    <script src="../../js/alumno-horario.js"></script>
 </body>
 </html>
