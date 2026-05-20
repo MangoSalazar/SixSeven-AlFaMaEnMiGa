@@ -16,7 +16,7 @@
     <div class="app">
         <main class="main" style="margin-left: 0; width: 100%;">
             <header class="topbar">
-                <button onclick="history.back()" class="btn-acadex-secondary" style="padding: 5px 15px; display: inline-flex; align-items: center; gap: 5px;">
+                <button type="button" onclick="history.back()" class="btn-acadex-secondary" style="padding: 5px 15px; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
                     <span class="material-symbols-rounded">arrow_back</span> Volver
                 </button>
                 <h1 class="topbar-title">Configuración <span class="topbar-sub">/ Mi Perfil</span></h1>
@@ -25,23 +25,23 @@
             <section class="content content-centered bg-acadex">
                 <div class="profile-card">
                     <div class="profile-header">
-                        <div class="avatar-lg">AJ</div>
-                        <h2 style="font-size: 1.8rem; color: var(--prussian); margin-bottom: 5px;">Alfredo Jiménez</h2>
-                        <p style="color: var(--text-muted); font-weight: 500;">Coordinador Académico</p>
+                        <div id="profileAvatar" class="avatar-lg">--</div>
+                        <h2 id="profileName" style="font-size: 1.8rem; color: var(--prussian); margin-bottom: 5px;">Cargando...</h2>
+                        <p id="profileRole" style="color: var(--text-muted); font-weight: 500; text-transform: capitalize;">---</p>
                     </div>
 
                     <div style="text-align: left; margin-top: 30px; border-top: 1px solid var(--border-light); padding-top: 20px;">
                         <div class="input-group" style="margin-bottom: 15px;">
-                            <label class="input-label" style="color: var(--text-muted); font-size: 0.85rem;">Número de Control / Nómina</label>
-                            <p style="font-weight: 600; font-size: 1.1rem; color: var(--prussian);">20210635</p>
+                            <label id="lblIdentificador" class="input-label" style="color: var(--text-muted); font-size: 0.85rem;">Identificador</label>
+                            <p id="profileIdentificador" style="font-weight: 600; font-size: 1.1rem; color: var(--prussian);">-------</p>
                         </div>
                         <div class="input-group">
                             <label class="input-label" style="color: var(--text-muted); font-size: 0.85rem;">Correo Institucional</label>
-                            <p style="font-weight: 600; font-size: 1.1rem; color: var(--prussian);">alfredo.jimenez@mochis.tecnm.mx</p>
+                            <p id="profileEmail" style="font-weight: 600; font-size: 1.1rem; color: var(--prussian);">-------</p>
                         </div>
                     </div>
 
-                    <a href="index.html" class="btn-logout" style="text-decoration: none;">
+                    <a href="index.html" id="btnLogout" class="btn-logout" style="text-decoration: none;">
                         <span class="material-symbols-rounded">logout</span>
                         Cerrar Sesión
                     </a>
@@ -49,5 +49,7 @@
             </section>
         </main>
     </div>
+
+    <script src="js/perfil.js"></script>
 </body>
 </html>

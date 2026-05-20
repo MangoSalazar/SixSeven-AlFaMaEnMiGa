@@ -31,14 +31,15 @@
                 <h1 class="topbar-title">Información Escolar <span class="topbar-sub">/ Dashboard</span></h1>
                 <div class="topbar-actions" style="cursor: pointer;" onclick="window.location.href='../../perfil.html'">
                     <div style="text-align: right; margin-right: 12px;">
-                        <p class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Fabián Salazar</p>
-                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Control: 20210634</p>
+                        <p id="topbarName" class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Cargando...</p>
+                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Control: <span id="topbarControl">--------</span></p>
                     </div>
-                    <div class="avatar">FS</div>
+                    <div id="topbarAvatar" class="avatar">--</div>
                 </div>
             </header>
 
             <section class="content bg-acadex" style="display: flex; flex-direction: column; gap: 24px; justify-content: flex-start !important; align-items: stretch !important; padding: 24px; min-height: auto;">
+                
                 <div class="form-card" style="max-width: 100%; margin: 0; width: 100%;">
                     <header class="form-title-group" style="margin-bottom: 8px;">
                         <div style="display: flex; align-items: center; gap: 8px;">
@@ -121,7 +122,7 @@
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%;">
                         <button class="btn-quick-access" onclick="window.location.href='kardex.html'"><span class="material-symbols-rounded" style="color: var(--sapphire);">description</span>Descargar Kárdex de Calificaciones</button>
                         <button class="btn-quick-access" onclick="window.location.href='horario.html'"><span class="material-symbols-rounded" style="color: #10B981;">calendar_month</span>Ver mi Horario de Clases</button>
-                        <button class="btn-quick-access" onclick="window.location.href='perfil-alumno.html'"><span class="material-symbols-rounded" style="color: var(--prussian);">manage_accounts</span>Configurar Datos de mi Cuenta</button>
+                        <button class="btn-quick-access" onclick="window.location.href='../../perfil.html'"><span class="material-symbols-rounded" style="color: var(--prussian);">manage_accounts</span>Configurar Datos de mi Cuenta</button>
                     </div>
                 </div>
             </section>
