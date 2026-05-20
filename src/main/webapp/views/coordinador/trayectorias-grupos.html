@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACADEX — Trayectorias y Grupos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    
+    <link rel="stylesheet" href="../../css/acadex-styles.css">
+    <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Administración</p>
+                <a href="materias.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">book</span>
+                    Materias
+                </a>
+                <a href="grupos.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">groups</span>
+                    Grupos / Horarios
+                </a>
+                <a href="alumnos-carrera.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">school</span>
+                    Alumnos de la carrera
+                </a>
+                <a href="trayectorias-grupos.html" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">route</span>
+                    Trayectorias y grupos
+                </a>
+            </nav>
+
+            <div class="sidebar-user">
+                <div class="user-avatar-sm">AJ</div>
+                <div class="user-info">
+                    <span class="user-name">Alfredo Jiménez</span>
+                    <span class="user-role">Coord. Académico</span>
+                </div>
+                <a href="../../perfil.html" class="btn-gear">
+                    <span class="material-symbols-rounded" style="font-size: 18px;">settings</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h1 class="topbar-title">Gestión de Alumnos <span class="topbar-sub">/ Trayectorias y Grupos</span></h1>
+                <div class="topbar-actions">
+                    <a href="../../perfil.html" class="avatar-link">
+                        <div class="avatar">AJ</div>
+                    </a>
+                </div>
+            </header>
+
+            <section class="content bg-acadex" style="padding: 24px;">
+
+                <div class="filtros-card">
+                    <div class="brand-header" style="margin-bottom: 12px;">
+                        <div class="brand-logo-circle brand-logo-transparent">
+                            <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo" class="brand-logo-img">
+                        </div>
+                        <span class="brand-name-text">Acadex</span>
+                    </div>
+
+                    <h1 class="form-title">Trayectorias y Grupos</h1>
+                    <p class="form-subtitle">Consulta el historial y los grupos actuales de un alumno específico.</p>
+
+                    <div class="filtros-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="input-group">
+                            <label class="input-label">Nombre o Número de Control del alumno</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">person_search</span>
+                                <input type="text" id="campo-busqueda-alumno" placeholder="Ej. 20210634 o Juan García" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Periodo a consultar</label>
+                            <div class="input-wrapper">
+                                <span class="material-symbols-rounded icon-accent">calendar_month</span>
+                                <select id="filtro-periodo-trayectoria">
+                                    <option value="" disabled selected>Selecciona un periodo</option>
+                                    <option value="Ago-Dic 2026">Ago–Dic 2026</option>
+                                    <option value="Ene-Jun 2026">Ene–Jun 2026</option>
+                                    <option value="Ago-Dic 2025">Ago–Dic 2025</option>
+                                    <option value="Ene-Jun 2025">Ene–Jun 2025</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filtros-acciones">
+                        <button type="button" id="btnConsultarTrayectoria" class="btn-acadex-primary">
+                            <span class="spinner-busqueda" id="spinnerConsultar"></span>
+                            <span class="material-symbols-rounded" id="iconoConsultar">analytics</span>
+                            <span id="textoConsultar">Consultar trayectoria</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="resultados-trayectoria-container">
+                    </div>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast-container">
+        <span id="toastIcon" class="material-symbols-rounded"></span>
+        <span id="toastMsg" class="toast-msg-text"></span>
+    </div>
+
+    <script src="../../js/trayectorias-grupos.js"></script>
+</body>
+</html>
