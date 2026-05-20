@@ -21,42 +21,70 @@ document.addEventListener("DOMContentLoaded", () => {
     const CAPACIDAD_MAXIMA = 30;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const idGrupo = urlParams.get('idGrupo') || 'G001';
+    const idGrupo = urlParams.get('idGrupo') || '1'; // IMPORTANTE: El backend de Milton espera un Integer (ej. 1, no 'G001')
     const nombreMateria = urlParams.get('materia') || 'Materia Desconocida';
+    
+    const API_BASE_URL = "http://localhost:8080/api";
 
     // Rellenar Encabezado
     headerMateria.textContent = `${idGrupo} - ${nombreMateria}`;
     headerClaveGrupo.textContent = `Grupo ${idGrupo}`;
-    headerDocente.textContent = "Ing. Roberto Carlos"; 
+    headerDocente.textContent = "Docente Asignado"; 
     headerPeriodo.textContent = "Ago-Dic 2026";
 
-    // --- Datos Simulados ---
-    // Alumnos que cumplen prerrequisitos para la materia
-    let alumnosDisponibles = [
-        { control: '20210634', nombre: 'Juan García López', carrera: 'ISC' },
-        { control: '20210855', nombre: 'María Fernanda Ruiz', carrera: 'ISC' },
-        { control: '20210912', nombre: 'Carlos Eduardo Soto', carrera: 'ISC' },
-        { control: '20211105', nombre: 'Ana Victoria Cota', carrera: 'ISC' },
-        { control: '20211244', nombre: 'Luis Mario Verdugo', carrera: 'ISC' }
-    ];
+    // --- Variables de Estado (Ahora inician vacías para llenarse con la BD) ---
+    let alumnosDisponibles = [];
+    let alumnosAsignados = [];
 
-    // Alumnos ya inscritos en este grupo
-    let alumnosAsignados = [
-        { control: '20210511', nombre: 'Jesús Antonio Beltrán', carrera: 'ISC' },
-        { control: '20210589', nombre: 'Diana Laura Félix', carrera: 'ISC' }
-    ];
+    // --- Cargar datos iniciales ---
+    async function cargarDatosBackend() {
+        try {
+            // 1. Obtener todos los alumnos inscritos en este grupo específico (GET /api/grupos-alumnos/{idGrupo}/alumnos)
+            const resAsignados = await fetch(`${API_BASE_URL}/grupos-alumnos/${idGrupo}/alumnos`);
+            if (resAsignados.ok) {
+                alumnosAsignados = await resAsignados.json();
+            }
+
+            const resTodos = await fetch(`${API_BASE_URL}/alumnos`);
+            if (resTodos.ok) {
+                const todosLosAlumnos = await resTodos.json();
+                
+                const idsAsignados = alumnosAsignados.map(a => a.id_alumno || a.control);
+                alumnosDisponibles = todosLosAlumnos.filter(a => !idsAsignados.includes(a.id_alumno || a.control));
+            }
+
+            // Si el backend aun no tiene datos usamos el mock de prueba:
+            if (alumnosDisponibles.length === 0 && alumnosAsignados.length === 0) {
+                console.warn("Usando datos de prueba porque la BD está vacía o inactiva.");
+                alumnosDisponibles = [
+                    { control: '20210634', nombre: 'Juan García López', carrera: 'ISC' },
+                    { control: '20210855', nombre: 'María Fernanda Ruiz', carrera: 'ISC' },
+                    { control: '20210912', nombre: 'Carlos Eduardo Soto', carrera: 'ISC' }
+                ];
+                alumnosAsignados = [
+                    { control: '20210511', nombre: 'Jesús Antonio Beltrán', carrera: 'ISC' }
+                ];
+            }
+
+            renderizarListas();
+
+        } catch (error) {
+            console.error("Error al cargar los datos de la BD:", error);
+            mostrarToast("Error de red: No se pudo conectar con el servidor.", "error");
+        }
+    }
 
     // --- Funcion para renderizar ambas listas ---
     function renderizarListas(filtroDisp = "", filtroAsig = "") {
         // Filtrar arrays si hay texto en los buscadores
         const dispFiltrados = alumnosDisponibles.filter(a => 
-            a.nombre.toLowerCase().includes(filtroDisp.toLowerCase()) || 
-            a.control.includes(filtroDisp)
+            (a.nombre || '').toLowerCase().includes(filtroDisp.toLowerCase()) || 
+            String(a.control || a.id_alumno || '').includes(filtroDisp)
         );
         
         const asigFiltrados = alumnosAsignados.filter(a => 
-            a.nombre.toLowerCase().includes(filtroAsig.toLowerCase()) || 
-            a.control.includes(filtroAsig)
+            (a.nombre || '').toLowerCase().includes(filtroAsig.toLowerCase()) || 
+            String(a.control || a.id_alumno || '').includes(filtroAsig)
         );
 
         badgeDisponibles.textContent = `${alumnosDisponibles.length} encontrados`;
@@ -104,12 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
         div.onmouseover = () => div.style.background = "white";
         div.onmouseout = () => div.style.background = tipo === 'asignado' ? "var(--mint-bg)" : "var(--snow)";
 
+        const idIdentificador = alumno.control || alumno.id_alumno || 'S/N';
+        const carrera = alumno.carrera || 'ISC';
+
         const infoDiv = document.createElement("div");
         infoDiv.innerHTML = `
-            <div style="font-size: 13.5px; font-weight: 600; color: var(--prussian);">${alumno.nombre}</div>
+            <div style="font-size: 13.5px; font-weight: 600; color: var(--prussian);">${alumno.nombre || 'Alumno Sin Nombre'}</div>
             <div style="font-size: 11.5px; color: var(--text-muted); display: flex; gap: 8px; margin-top: 2px;">
-                <span>#${alumno.control}</span>
-                <span>• ${alumno.carrera}</span>
+                <span>#${idIdentificador}</span>
+                <span>• ${carrera}</span>
             </div>
         `;
 
@@ -119,14 +150,14 @@ document.addEventListener("DOMContentLoaded", () => {
             actionBtn.style.color = "var(--sapphire)";
             actionBtn.innerHTML = `<span class="material-symbols-rounded">person_add</span>`;
             actionBtn.title = "Agregar al grupo";
-            actionBtn.onclick = () => agregarAlumno(alumno.control);
+            actionBtn.onclick = () => agregarAlumno(idIdentificador);
         } else {
             actionBtn.className = "btn btn-icon";
             actionBtn.style.color = "var(--strawberry)";
             actionBtn.style.borderColor = "var(--strawberry-border)";
             actionBtn.innerHTML = `<span class="material-symbols-rounded">person_remove</span>`;
             actionBtn.title = "Quitar del grupo";
-            actionBtn.onclick = () => quitarAlumno(alumno.control);
+            actionBtn.onclick = () => quitarAlumno(idIdentificador);
         }
 
         div.appendChild(infoDiv);
@@ -135,36 +166,71 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- Logica Alta de Alumno ---
-    function agregarAlumno(control) {
+    async function agregarAlumno(control) {
         if (alumnosAsignados.length >= CAPACIDAD_MAXIMA) {
             mostrarToast("Capacidad máxima del grupo alcanzada (30/30).", "error");
             return;
         }
 
-        const index = alumnosDisponibles.findIndex(a => a.control === control);
+        const index = alumnosDisponibles.findIndex(a => a.control === control || a.id_alumno === control);
         if (index > -1) {
             const alumno = alumnosDisponibles[index];
-            alumnosDisponibles.splice(index, 1);
-            alumnosAsignados.push(alumno);
-            mostrarToast(`Alumno ${alumno.nombre} inscrito correctamente.`, "success");
-            
-            inputBuscarDisponible.value = "";
-            renderizarListas("", inputBuscarAsignado.value);
+
+            try {
+                // PETICIÓN REAL: POST /api/grupos-alumnos/{idGrupo}/alumnos/{idAlumno}
+                const response = await fetch(`${API_BASE_URL}/grupos-alumnos/${idGrupo}/alumnos/${control}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText || "Error en el servidor");
+                }
+
+                // UI Update
+                alumnosDisponibles.splice(index, 1);
+                alumnosAsignados.push(alumno);
+                mostrarToast(`Alumno ${alumno.nombre} inscrito correctamente.`, "success");
+                
+                inputBuscarDisponible.value = "";
+                renderizarListas("", inputBuscarAsignado.value);
+
+            } catch (error) {
+                console.error("Fallo al vincular alumno:", error);
+                mostrarToast("No se pudo agregar al alumno en la BD.", "error");
+            }
         }
     }
 
     // --- Logica Baja de Alumno ---
-    function quitarAlumno(control) {
-        const index = alumnosAsignados.findIndex(a => a.control === control);
+    async function quitarAlumno(control) {
+        const index = alumnosAsignados.findIndex(a => a.control === control || a.id_alumno === control);
         if (index > -1) {
             const alumno = alumnosAsignados[index];
-            alumnosAsignados.splice(index, 1);
-            alumnosDisponibles.push(alumno);
 
-            mostrarToast(`Se dio de baja a ${alumno.nombre} del grupo.`, "info");
-            
-            inputBuscarAsignado.value = "";
-            renderizarListas(inputBuscarDisponible.value, "");
+            try {
+                const response = await fetch(`${API_BASE_URL}/grupos-alumnos/${idGrupo}/alumnos/${control}`, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText || "Error en el servidor");
+                }
+
+                alumnosAsignados.splice(index, 1);
+                alumnosDisponibles.push(alumno);
+                mostrarToast(`Se dio de baja a ${alumno.nombre} del grupo.`, "info");
+                
+                inputBuscarAsignado.value = "";
+                renderizarListas(inputBuscarDisponible.value, "");
+
+            } catch (error) {
+                console.error("Fallo al desvincular alumno:", error);
+                mostrarToast("No se pudo dar de baja en la BD.", "error");
+            }
         }
     }
 
@@ -199,5 +265,5 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => toast.classList.remove("show"), 3000);
     }
     
-    renderizarListas();
+    cargarDatosBackend();
 });
