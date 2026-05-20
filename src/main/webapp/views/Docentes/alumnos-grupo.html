@@ -35,7 +35,12 @@
         <main class="main">
             <header class="topbar">
                 <h1 class="topbar-title">Panel de Docente <span class="topbar-sub">/ Captura de Calificaciones</span></h1>
-                <div class="topbar-actions">
+                
+                <div class="topbar-actions" style="cursor: pointer;" onclick="window.location.href='../../perfil.html'">
+                    <div style="text-align: right; margin-right: 12px;">
+                        <p class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Alejandro Juárez</p>
+                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Emp: DOC-2026</p>
+                    </div>
                     <div class="avatar">AJ</div>
                 </div>
             </header>
@@ -47,7 +52,7 @@
                         <a href="mis-grupos.html" style="color: var(--sapphire); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 5px;">
                             <span class="material-symbols-rounded" style="font-size: 1.1rem;">arrow_back</span> Regresar a grupos
                         </a>
-                       <span id="materiaTitle" class="form-counter" style="font-weight: 700; color: var(--prussian);">Materia: Estructura de Datos (AED-1283)</span>
+                       <span id="materiaTitle" class="form-counter" style="font-weight: 700; color: var(--prussian);">Cargando información de la materia...</span>
                     </div>
 
                     <header class="form-title-group">
@@ -65,28 +70,7 @@
                                     <th style="width: 140px; text-align: center;">Estatus</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr data-id-kardex="101">
-                                    <td class="font-bold text-prussian">20210634</td>
-                                    <td>Fabián Montes</td>
-                                    <td style="text-align: center;">
-                                        <input type="number" class="table-input-score" min="0" max="100" step="0.1" value="95.0" oninput="validarFila(this)">
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <span class="status-badge approved">Aprobada</span>
-                                    </td>
-                                </tr>
-                                <tr data-id-kardex="102">
-                                    <td class="font-bold text-prussian">20210635</td>
-                                    <td>Alfredo Jiménez</td>
-                                    <td style="text-align: center;">
-                                        <input type="number" class="table-input-score" min="0" max="100" step="0.1" value="58.5" oninput="validarFila(this)">
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <span class="status-badge reproved">Reprobada</span>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="tablaAlumnos"></tbody>
                         </table>
                     </div>
 
@@ -104,41 +88,60 @@
     </div>
 
     <script>
-        
-        // LÓGICA PARA DETECTAR LA MATERIA CORRECTA AL CARGAR LA PÁGINA
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Obtener el id_asignacion desde la URL (?id_asignacion=X)
             const urlParams = new URLSearchParams(window.location.search);
             const idAsignacion = urlParams.get('id_asignacion');
             const materiaTitle = document.getElementById('materiaTitle');
 
-            // 2. Simulación de datos según la materia seleccionada
-            if (idAsignacion === '2') {
-                // Cambiar encabezado a Programación Web (Datos del diccionario maestro)
-                materiaTitle.textContent = "Materia: Programación Web (TCH-1024)";
-                
-                // alumnos 
-                const filas = document.querySelectorAll('.acadex-table tbody tr');
-                if (filas.length >= 2) {
-                    filas[0].cells[0].textContent = "20210701";
-                    filas[0].cells[1].textContent = "Jorge Omar";
-                    filas[0].querySelector('.table-input-score').value = "88.0";
-                    filas[0].querySelector('.status-badge').textContent = "Aprobada";
-                    filas[0].querySelector('.status-badge').className = "status-badge approved";
-
-                    filas[1].cells[0].textContent = "20210702";
-                    filas[1].cells[1].textContent = "Gael Alejandro";
-                    filas[1].querySelector('.table-input-score').value = "92.5";
-                    filas[1].querySelector('.status-badge').textContent = "Aprobada";
-                    filas[1].querySelector('.status-badge').className = "status-badge approved";
+            //  DATOS DE SIMULACIÓN 
+            const baseEstudiantes = {
+                '1': {
+                    titulo: "Materia: Estructura de Datos (AED-1283)",
+                    alumnos: [
+                        { id_kardex: 101, control: "20210634", nombre: "Fabián Montes", calificacion: 95.0, estatus: "Aprobada" },
+                        { id_kardex: 102, control: "20210635", nombre: "Alfredo Jiménez", calificacion: 58.5, estatus: "Reprobada" }
+                    ]
+                },
+                '2': {
+                    titulo: "Materia: Programación Web (TCH-1024)",
+                    alumnos: [
+                        { id_kardex: 201, control: "20210701", nombre: "Jorge Omar", calificacion: 88.0, estatus: "Aprobada" },
+                        { id_kardex: 202, control: "20210702", nombre: "Gael Alejandro", calificacion: 92.5, estatus: "Aprobada" }
+                    ]
                 }
-            } else {
-                // Por defecto o si es id_asignacion = 1, mantiene Estructura de Datos
-                materiaTitle.textContent = "Materia: Estructura de Datos (AED-1283)";
-            }
+            };
+
+           
+            const grupoSeleccionado = baseEstudiantes[idAsignacion] || baseEstudiantes['1'];
+            
+            materiaTitle.textContent = grupoSeleccionado.titulo;
+            renderizarAlumnos(grupoSeleccionado.alumnos);
         });
 
-        
+        function renderizarAlumnos(listaAlumnos) {
+            const tbody = document.getElementById('tablaAlumnos');
+            tbody.innerHTML = "";
+
+            listaAlumnos.forEach(alumno => {
+                const tr = document.createElement('tr');
+                tr.setAttribute('data-id-kardex', alumno.id_kardex); // Amarre con PK de KARDEX 
+                
+                const badgeClass = alumno.estatus === 'Aprobada' ? 'approved' : 'reproved';
+
+                tr.innerHTML = `
+                    <td class="font-bold text-prussian">${alumno.control}</td>
+                    <td>${alumno.nombre}</td>
+                    <td style="text-align: center;">
+                        <input type="number" class="table-input-score" min="0" max="100" step="0.1" value="${alumno.calificacion.toFixed(1)}" oninput="validarFila(this)">
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="status-badge ${badgeClass}">${alumno.estatus}</span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
         function validarFila(input) {
             let score = parseFloat(input.value);
             const row = input.closest('tr');
@@ -159,12 +162,10 @@
             }
         }
 
-        // Simulación de envío de calificaciones
         function enviarCalificaciones() {
             console.log("Enviando paquete de calificaciones locales...");
             alert("¡Calificaciones guardadas localmente con éxito!");
         }
-    
     </script>
 </body>
 </html>

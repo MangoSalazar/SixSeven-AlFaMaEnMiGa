@@ -689,3 +689,65 @@
     .filtros-acciones { flex-direction: column; }
     .resultados-header { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+
+   /* PORTAL ALUMNOS (DÍA 5) */
+   
+.btn-quick-access {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    color: var(--prussian);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-quick-access:hover {
+    background: #f1f5f9;
+    border-color: var(--sapphire);
+    color: var(--sapphire);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.class-today-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.class-today-item:last-child {
+    border-bottom: none;
+}
+
+.modal-overlay {
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(15, 23, 42, 0.3); 
+    backdrop-filter: blur(4px);
+    justify-content: center; 
+    align-items: center; 
+    z-index: 9999;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-card-animated {
+    animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}

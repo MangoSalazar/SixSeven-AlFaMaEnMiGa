@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACADEX — Asignación de Alumnos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    
+    <link rel="stylesheet" href="../../css/acadex-styles.css">
+    <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <img src="../../assets/AcadexLogo.png" alt="ACADEX Logo">
+                </div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Administración</p>
+                <a href="materias.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">book</span>
+                    Materias
+                </a>
+                <a href="grupos.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">groups</span>
+                    Grupos / Horarios
+                </a>
+                <a href="alumnos-carrera.html" class="nav-item">
+                    <span class="material-symbols-rounded nav-icon">school</span>
+                    Alumnos de la carrera
+                </a>
+                <a href="trayectorias-grupos.html" class="nav-item active">
+                    <span class="material-symbols-rounded nav-icon">route</span>
+                    Trayectorias y grupos
+                </a>
+            </nav>
+
+            <div class="sidebar-user">
+                <div class="user-avatar-sm">AJ</div>
+                <div class="user-info">
+                    <span class="user-name">Alfredo Jiménez</span>
+                    <span class="user-role">Coord. Académico</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <h1 class="topbar-title">Trayectorias y Grupos <span class="topbar-sub">/ Asignación de alumnos</span></h1>
+                <div class="topbar-actions">
+                    <a href="trayectorias-grupos.html" class="btn btn-ghost btn-sm">
+                        <span class="material-symbols-rounded">arrow_back</span> Regresar
+                    </a>
+                    <div class="avatar">AJ</div>
+                </div>
+            </header>
+
+            <section class="content bg-acadex" style="padding: 24px;">
+                
+                <div class="card mb-24" style="border-left: 4px solid var(--sapphire);">
+                    <div class="flex-between">
+                        <div>
+                            <h2 id="header-materia" style="font-size: 1.4rem; color: var(--prussian); margin-bottom: 4px;">Cargando Materia...</h2>
+                            <p class="text-secondary" style="font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-rounded" style="font-size: 18px;">person</span> <span id="header-docente">Cargando Docente...</span>
+                                | <span class="material-symbols-rounded" style="font-size: 18px;">event</span> <span id="header-periodo">Periodo Actual</span>
+                            </p>
+                        </div>
+                        <div style="text-align: right;">
+                            <span class="badge badge-golden mb-8" id="header-clave-grupo" style="font-size: 14px;">G000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    
+                    <div class="card" style="display: flex; flex-direction: column; max-height: 600px;">
+                        <div class="flex-between mb-16">
+                            <h3 style="font-size: 1.1rem;">Alumnos Disponibles</h3>
+                            <span class="badge badge-sky" id="badge-disponibles">0 encontrados</span>
+                        </div>
+                        
+                        <div class="search-wrap mb-16">
+                            <span class="material-symbols-rounded search-icon">search</span>
+                            <input type="text" id="buscar-disponible" class="search-input" placeholder="Buscar por nombre o control...">
+                        </div>
+
+                        <div id="lista-disponibles" style="flex: 1; overflow-y: auto; padding-right: 5px; display: flex; flex-direction: column; gap: 8px;">
+                            </div>
+                    </div>
+
+                    <div class="card" style="display: flex; flex-direction: column; max-height: 600px; border-top: 4px solid var(--mint);">
+                        <div class="flex-between mb-16">
+                            <h3 style="font-size: 1.1rem;">Alumnos en el Grupo</h3>
+                            <div class="flex-gap">
+                                <span class="material-symbols-rounded text-muted" style="font-size: 20px;" title="Capacidad del grupo">group</span>
+                                <span class="badge badge-prussian" id="badge-asignados" style="font-size: 14px;">0 / 30</span>
+                            </div>
+                        </div>
+
+                        <div class="search-wrap mb-16">
+                            <span class="material-symbols-rounded search-icon">filter_list</span>
+                            <input type="text" id="buscar-asignado" class="search-input" placeholder="Filtrar inscritos...">
+                        </div>
+
+                        <div id="lista-asignados" style="flex: 1; overflow-y: auto; padding-right: 5px; display: flex; flex-direction: column; gap: 8px;">
+                            </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast-container">
+        <span id="toastIcon" class="material-symbols-rounded"></span>
+        <span id="toastMsg" class="toast-msg-text"></span>
+    </div>
+
+    <script src="../../js/asignacion-alumnos.js"></script>
+</body>
+</html>

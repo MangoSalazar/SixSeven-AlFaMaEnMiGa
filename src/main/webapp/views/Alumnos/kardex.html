@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACADEX — Mi Kardex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+  <link rel="stylesheet" href="../../css/acadex-styles.css">
+  <link rel="stylesheet" href="../../css/forms-acadex.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-icon"><img src="../../assets/AcadexLogo.png" alt="ACADEX Logo"></div>
+                <span class="logo-text">ACADEX</span>
+            </div>
+            <nav class="sidebar-section">
+                <p class="sidebar-label">Portal Estudiantil</p>
+                <a href="dashboard.html" class="nav-item"><span class="material-symbols-rounded nav-icon">dashboard</span>Dashboard</a>
+                <a href="horario.html" class="nav-item"><span class="material-symbols-rounded nav-icon">calendar_month</span>Mi Horario</a>
+                <a href="kardex.html" class="nav-item active"><span class="material-symbols-rounded nav-icon">analytics</span>Mi Kardex</a>
+            </nav>
+        </aside>
+
+        <main class="main" style="overflow-y: auto;">
+            <header class="topbar">
+                <h1 class="topbar-title">Información Escolar <span class="topbar-sub">/ Historial de Calificaciones</span></h1>
+                <div class="topbar-actions" style="cursor: pointer;" onclick="window.location.href='../../perfil.html'">
+                    <div style="text-align: right; margin-right: 12px;">
+                        <p id="topbarName" class="font-bold text-prussian" style="font-size: 0.9rem; margin: 0;">Cargando...</p>
+                        <p style="font-size: 0.75rem; color: #64748b; margin: 0;">Control: <span id="topbarControl">--------</span></p>
+                    </div>
+                    <div id="topbarAvatar" class="avatar">--</div>
+                </div>
+            </header>
+
+            <section class="content bg-acadex">
+                <div class="form-card" style="max-width: 100%;">
+                    <header class="form-title-group">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-rounded text-sapphire" style="font-size: 1.8rem;">analytics</span>
+                            <h1 class="form-title" style="margin: 0;">Historial de Calificaciones (Kardex)</h1>
+                        </div>
+                        <p class="form-subtitle">Consulta de evaluaciones oficiales registradas en el expediente institucional.</p>
+                    </header>
+
+                    <div class="table-container" style="margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                        <table class="acadex-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 150px;">Clave</th>
+                                    <th>Asignatura Evaluada</th>
+                                    <th style="text-align: center; width: 180px;">Calificación Final</th>
+                                    <th style="text-align: center; width: 180px;">Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaKardex"></tbody>
+                        </table>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: center; background-color: #f8fafc; padding: 18px 24px; border: 1.5px solid #e2e8f0; border-top: none; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;">
+                        <div style="display: flex; gap: 24px;">
+                            <p style="margin: 0; font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+                                Materias Evaluadas: <span id="totalMaterias" style="color: var(--prussian); font-size: 0.95rem; font-weight: 700; margin-left: 4px;">0</span>
+                            </p>
+                            <p style="margin: 0; font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+                                Créditos Obtenidos: <span style="color: var(--prussian); font-size: 0.95rem; font-weight: 700; margin-left: 4px;">112 / 260</span>
+                            </p>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 0.85rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Promedio General:</span>
+                            <span id="promedioKardex" style="font-size: 1.4rem; font-weight: 700; color: var(--sapphire); background: white; padding: 4px 12px; border-radius: 8px; border: 1.5px solid #e2e8f0; min-width: 70px; text-align: center;">0.0</span>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: center; margin-top: 28px;">
+                        <button type="button" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 32px; font-size: 0.95rem; box-shadow: var(--shadow-sm);" onclick="alert('Generando archivo PDF oficial con el historial académico completo...')">
+                            <span>Descargar Kárdex Completo</span>
+                            <span class="material-symbols-rounded" style="font-size: 1.3rem;">download</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/alumno-kardex.js"></script>
+</body>
+</html>
